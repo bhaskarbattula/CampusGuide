@@ -56,6 +56,34 @@ class TextSplitter:
 
         return chunks
 
+    def _is_chunk_invalid(self, text: str) -> bool:
+        """
+        Check if a chunk contains invalid or problematic content.
+
+        Args:
+            text: Chunk text to validate
+
+        Returns:
+            True if chunk should be filtered out
+        """
+        # Skip chunks that are mostly whitespace or punctuation
+        if not text or text.isspace():
+            return True
+
+        # Skip chunks with too many special characters
+        special_chars = sum(
+            1 for char in text if not char.isalnum() and not char.isspace()
+        )
+        if special_chars > len(text) * 0.5:
+            return True
+
+        # Skip chunks that look like headers/footers (very short, all caps, etc.)
+        words = text.split()
+        if len(words) < 3 and text.isupper():
+            return True
+
+        return False
+
     def split_document(self, document: Dict[str, Any]) -> List[Dict[str, Any]]:
         """
         Split a document into chunks with metadata preservation.
@@ -70,10 +98,32 @@ class TextSplitter:
         pages = document.get("pages", [])
         metadata = document.get("metadata", {})
 
+        # Validate that we have meaningful text
+        if not text or len(text.strip()) < 20:
+            print(
+                f"Warning: Document {metadata.get('filename', 'unknown')} has insufficient text content"
+            )
+            return []
+
         chunks = self.split_text(text)
 
+        # Filter out chunks that are too short or meaningless
+        valid_chunks = []
+        for chunk in chunks:
+            chunk_text = chunk.strip()
+            if len(chunk_text) >= 30 and not self._is_chunk_invalid(
+                chunk_text
+            ):  # Minimum chunk length + validity check
+                valid_chunks.append(chunk)
+
+        if not valid_chunks:
+            print(
+                f"Warning: No valid chunks generated for {metadata.get('filename', 'unknown')}"
+            )
+            return []
+
         chunk_docs = []
-        for i, chunk in enumerate(chunks):
+        for i, chunk in enumerate(valid_chunks):
             # Find which pages this chunk spans
             chunk_pages = self._find_chunk_pages(chunk, pages)
 
@@ -84,7 +134,7 @@ class TextSplitter:
                 "metadata": {
                     **metadata,
                     "chunk_index": i,
-                    "total_chunks": len(chunks),
+                    "total_chunks": len(valid_chunks),
                     "start_page": chunk_pages[0] if chunk_pages else None,
                     "end_page": chunk_pages[-1] if chunk_pages else None,
                 },
@@ -119,3 +169,29 @@ class TextSplitter:
                     chunk_pages.append(page_num)
 
         return sorted(list(set(chunk_pages)))
+        """
+        Check if a chunk contains invalid or problematic content.
+
+        Args:
+            text: Chunk text to validate
+
+        Returns:
+            True if chunk should be filtered out
+        """
+        # Skip chunks that are mostly whitespace or punctuation
+        if not text or text.isspace():
+            return True
+
+        # Skip chunks with too many special characters
+        special_chars = sum(
+            1 for char in text if not char.isalnum() and not char.isspace()
+        )
+        if special_chars > len(text) * 0.5:
+            return True
+
+        # Skip chunks that look like headers/footers (very short, all caps, etc.)
+        words = text.split()
+        if len(words) < 3 and text.isupper():
+            return True
+
+        return False

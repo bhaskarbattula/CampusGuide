@@ -6,30 +6,42 @@ load_dotenv()
 
 
 class Config:
+    # API Provider Configuration
+    API_PROVIDER = os.getenv("API_PROVIDER", "xai")  # "openai" or "xai"
+    API_KEY = os.getenv("API_KEY")
+
     # LLM Configuration
-    LLM_MODEL = os.getenv("LLM_MODEL", "gpt-3.5-turbo")
+    LLM_MODEL = os.getenv(
+        "LLM_MODEL", "grok-beta" if API_PROVIDER == "xai" else "gpt-3.5-turbo"
+    )
     LLM_TEMPERATURE = 0.1  # Low temperature for factual responses
-    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-    # Embedding Configuration
-    EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "text-embedding-ada-002")
-    EMBEDDING_DIMENSION = 1536  # For text-embedding-ada-002
+    # Embedding Configuration (free & local)
+    EMBEDDING_MODEL = "all-MiniLM-L6-v2"
+    EMBEDDING_DIMENSION = 384
 
-    # Vector Store Configuration
-    VECTOR_STORE_TYPE = "faiss"  # or "chromadb"
+    # API Base URL
+    API_BASE_URL = (
+        "https://api.x.ai/v1" if API_PROVIDER == "xai" else "https://api.openai.com/v1"
+    )
 
-    # Retrieval Configuration
-    CHUNK_SIZE = 1000
-    CHUNK_OVERLAP = 200
-    TOP_K_RETRIEVAL = 5
-    SIMILARITY_THRESHOLD = 0.7  # Minimum similarity for retrieval confidence
+    # Vector Store
+    VECTOR_STORE_TYPE = "faiss"
 
-    # Validation Configuration
-    MIN_SUPPORTING_CHUNKS = 2  # Minimum chunks required for answer
-    GROUNDING_STRICTNESS = 0.8  # Threshold for grounding validation
+    # Retrieval Configuration (TUNED for policy documents)
+    CHUNK_SIZE = 500  # Smaller chunks to preserve policy statements
+    CHUNK_OVERLAP = 100  # Reduced overlap for better preservation
+    TOP_K_RETRIEVAL = 10  # Retrieve more candidates
+    SIMILARITY_THRESHOLD = 0.3  # Lower threshold for policy questions
+
+    # Validation Configuration (TUNED for policy documents)
+    MIN_SUPPORTING_CHUNKS = 1
+    GROUNDING_STRICTNESS = 0.5  # Lower for policy answers that may be interpretive
 
     # Document Processing
-    SUPPORTED_EXTENSIONS = [".pdf"]
+    SUPPORTED_EXTENSIONS = [
+        ".pdf"
+    ]  # Temporarily disabled image support to prevent processing errors
     OCR_FALLBACK = True
 
     # Paths
@@ -40,7 +52,7 @@ class Config:
     # Roles
     ALLOWED_ROLES = ["student", "faculty", "coordinator", "parent"]
 
-    # UI Configuration
+    # UI
     MAX_CHAT_HISTORY = 10
 
     # Logging

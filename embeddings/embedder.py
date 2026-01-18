@@ -1,17 +1,18 @@
 import numpy as np
 from typing import List, Dict, Any
-from openai import OpenAI
+from sentence_transformers import SentenceTransformer
 from config.config import Config
 
 
 class Embedder:
     def __init__(self):
         self.config = Config()
-        self.client = OpenAI(api_key=self.config.OPENAI_API_KEY)
+        # Use free sentence transformer model (no API key needed)
+        self.model = SentenceTransformer(self.config.EMBEDDING_MODEL)
 
     def embed_texts(self, texts: List[str]) -> List[List[float]]:
         """
-        Generate embeddings for a list of texts.
+        Generate embeddings for a list of texts using sentence transformers.
 
         Args:
             texts: List of text strings to embed
@@ -23,21 +24,21 @@ class Embedder:
             return []
 
         try:
-            response = self.client.embeddings.create(
-                input=texts, model=self.config.EMBEDDING_MODEL
-            )
+            # Generate embeddings using sentence transformers
+            embeddings = self.model.encode(texts, convert_to_numpy=True)
 
-            embeddings = [data.embedding for data in response.data]
+            # Convert to list of lists and normalize
+            embeddings_list = embeddings.tolist()
 
             # Validate embedding dimensions
             expected_dim = self.config.EMBEDDING_DIMENSION
-            for i, emb in enumerate(embeddings):
+            for i, emb in enumerate(embeddings_list):
                 if len(emb) != expected_dim:
                     raise ValueError(
                         f"Embedding {i} has dimension {len(emb)}, expected {expected_dim}"
                     )
 
-            return embeddings
+            return embeddings_list
 
         except Exception as e:
             raise RuntimeError(f"Failed to generate embeddings: {str(e)}")

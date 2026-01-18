@@ -9,6 +9,9 @@ class Retriever:
         self.config = Config()
         self.embedder = Embedder()
         self.vector_store = VectorStore()
+        # Load vector store on initialization
+        if not self.vector_store.load():
+            print("Warning: Vector store not loaded in retriever")
 
     def retrieve(
         self, query: str, role: Optional[str] = None, top_k: Optional[int] = None

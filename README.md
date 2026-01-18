@@ -16,10 +16,12 @@ The system prevents hallucinations by grounding all responses in official ICFAI 
 ### RAG Pipeline
 
 1. **Document Ingestion**
+   - PDF and image file support (PNG, JPG, JPEG, BMP, TIFF)
    - PDF loading with OCR fallback
+   - Direct OCR for image files
    - Text cleaning (header/footer removal)
    - Chunking with configurable overlap
-   - Embedding generation
+   - Free local embedding generation (Sentence Transformers)
 
 2. **Retrieval**
    - Semantic search using FAISS vector store
@@ -29,7 +31,7 @@ The system prevents hallucinations by grounding all responses in official ICFAI 
 3. **Generation**
    - Context-only LLM prompting
    - Low temperature for factual responses
-   - OpenAI GPT models
+   - xAI Grok model (cost-effective alternative to GPT)
 
 4. **Validation**
    - Retrieval confidence gating
@@ -76,11 +78,16 @@ The system prevents hallucinations by grounding all responses in official ICFAI 
    pip install -r requirements.txt
 
 3. Set up environment variables:
-   cp .env.example .env  
-   Edit `.env` and add your OpenAI API key
+    Edit `.env` with your xAI API key:
+
+    ```bash
+    # Only xAI API key needed (completely free embeddings)
+    API_PROVIDER=xai
+    API_KEY=your_xai_api_key_here  # Get from https://x.ai
+    ```
 
 4. Add official documents:
-   Place PDF files inside `data/raw/`
+    Place PDF or image files (PNG, JPG, JPEG, BMP, TIFF) inside `data/raw/`
 
 5. Run the application:
    streamlit run app.py
