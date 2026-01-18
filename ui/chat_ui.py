@@ -20,7 +20,7 @@ class ChatUI:
             role: Selected user role
         """
         st.title("💬 Ask CampusGuide")
-        st.markdown(f"*Role: {role.title()}*")
+        st.markdown(f"*Role: {role.title() if role else 'Unknown'}*")
 
         # Initialize chat history
         if "chat_history" not in st.session_state:

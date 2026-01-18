@@ -35,11 +35,13 @@ class DocumentLoader:
         # Handle different file types
         if file_ext == ".pdf":
             return self._load_pdf_file(file_path)
+        elif file_ext == ".txt":
+            return self._load_txt_file(file_path)
         elif file_ext in [".png", ".jpg", ".jpeg", ".bmp", ".tiff", ".tif"]:
             return self._load_image_file(file_path)
         else:
             raise ValueError(
-                f"Unsupported file type: {file_ext}. Supported: PDF, PNG, JPG, JPEG, BMP, TIFF, TIF"
+                f"Unsupported file type: {file_ext}. Supported: PDF, TXT, PNG, JPG, JPEG, BMP, TIFF, TIF"
             )
 
     def _load_pdf_file(self, file_path: str) -> Dict[str, Any]:
@@ -82,6 +84,38 @@ class DocumentLoader:
         }
 
         return {"text": full_text.strip(), "pages": text_pages, "metadata": metadata}
+
+    def _load_txt_file(self, file_path: str) -> Dict[str, Any]:
+        """
+        Load TXT document and extract text.
+
+        Args:
+            file_path: Path to the TXT file
+
+        Returns:
+            Dict containing extracted data
+        """
+        try:
+            with open(file_path, "r", encoding="utf-8") as f:
+                text = f.read()
+        except UnicodeDecodeError:
+            # Try with different encoding
+            with open(file_path, "r", encoding="latin-1") as f:
+                text = f.read()
+
+        # For TXT files, treat as single page
+        text_pages = [(1, text)]
+
+        # Extract metadata
+        metadata = {
+            "filename": os.path.basename(file_path),
+            "upload_date": os.path.getmtime(file_path),
+            "file_size": os.path.getsize(file_path),
+            "pages": 1,
+            "file_type": "txt",
+        }
+
+        return {"text": text.strip(), "pages": text_pages, "metadata": metadata}
 
     def _load_image_file(self, file_path: str) -> Dict[str, Any]:
         """
@@ -245,8 +279,8 @@ class DocumentLoader:
         if not os.path.exists(directory):
             return documents
 
-        # Only support PDF files for now to avoid image processing issues
-        supported_extensions = [".pdf"]  # Temporarily disable image support
+        # Only support configured file types
+        supported_extensions = self.config.SUPPORTED_EXTENSIONS
 
         for filename in os.listdir(directory):
             file_ext = os.path.splitext(filename)[1].lower()
@@ -316,61 +350,6 @@ class DocumentLoader:
             return False
 
         return True
-
-        supported_extensions = [
-            ".pdf",
-            ".png",
-            ".jpg",
-            ".jpeg",
-            ".bmp",
-            ".tiff",
-            ".tif",
-        ]
-
-        for filename in os.listdir(directory):
-            file_ext = os.path.splitext(filename)[1].lower()
-            if file_ext in supported_extensions:
-                file_path = os.path.join(directory, filename)
-                try:
-                    doc = self.load_document(file_path)
-                    # Additional validation: ensure document has meaningful content
-                    if (
-                        doc["text"] and len(doc["text"].strip()) > 20
-                    ):  # Minimum 20 characters
-                        documents.append(doc)
-                        print(
-                            f"Successfully loaded: {filename} ({len(doc['text'])} characters)"
-                        )
-                    else:
-                        print(f"Skipped {filename}: insufficient content")
-                except Exception as e:
-                    print(f"Failed to load {filename}: {str(e)}")
-                    continue
-
-        print(f"Total documents loaded: {len(documents)}")
-        return documents
-
-        supported_extensions = [
-            ".pdf",
-            ".png",
-            ".jpg",
-            ".jpeg",
-            ".bmp",
-            ".tiff",
-            ".tif",
-        ]
-
-        for filename in os.listdir(directory):
-            file_ext = os.path.splitext(filename)[1].lower()
-            if file_ext in supported_extensions:
-                file_path = os.path.join(directory, filename)
-                try:
-                    doc = self.load_document(file_path)
-                    documents.append(doc)
-                except Exception as e:
-                    print(f"Failed to load {filename}: {str(e)}")
-
-        return documents
 
     def load_multiple_pdfs(self, directory: str) -> List[Dict[str, Any]]:
         """

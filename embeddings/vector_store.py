@@ -4,6 +4,7 @@ import numpy as np
 import faiss
 from typing import List, Dict, Any, Tuple
 from config.config import Config
+from sklearn.metrics.pairwise import cosine_similarity
 
 
 class VectorStore:
@@ -13,6 +14,8 @@ class VectorStore:
         self.chunks = []
         self.index_path = self.config.VECTOR_STORE_PATH + "_index.faiss"
         self.chunks_path = self.config.VECTOR_STORE_PATH + "_chunks.pkl"
+        # For TF-IDF, we'll store embeddings as numpy arrays
+        self.embeddings = None
 
     def add_chunks(self, chunks: List[Dict[str, Any]]) -> None:
         """
@@ -37,17 +40,19 @@ class VectorStore:
 
         embeddings_array = np.array(embeddings, dtype=np.float32)
 
-        # Normalize embeddings for cosine similarity
-        faiss.normalize_L2(embeddings_array)
+        # Normalize for cosine similarity
+        norms = np.linalg.norm(embeddings_array, axis=1, keepdims=True)
+        norms[norms == 0] = 1  # Avoid division by zero
+        embeddings_array = embeddings_array / norms
 
         if self.index is None:
             # Create new index
             dimension = embeddings_array.shape[1]
             self.index = faiss.IndexFlatIP(
                 dimension
-            )  # Inner product (cosine similarity)
+            )  # Inner product on normalized vectors = cosine
 
-        # Add normalized vectors to index
+        # Add vectors to index
         self.index.add(embeddings_array)
         self.chunks.extend(valid_chunks)
 
@@ -71,8 +76,10 @@ class VectorStore:
 
         query_array = np.array([query_embedding], dtype=np.float32)
 
-        # Normalize for cosine similarity
-        faiss.normalize_L2(query_array)
+        # Normalize query for cosine similarity
+        norm = np.linalg.norm(query_array)
+        if norm > 0:
+            query_array = query_array / norm
 
         # Search
         scores, indices = self.index.search(query_array, min(top_k, self.index.ntotal))

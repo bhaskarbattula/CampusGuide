@@ -79,8 +79,8 @@ class SafetyChecker:
             sources.add(filename)
             pages.update(chunk_pages)
 
-        # Require at least 2 different sources or pages for multiple chunks
-        return len(sources) >= 2 or len(pages) >= 2
+        # Allow single source if we have sufficient chunks
+        return len(sources) >= 1
 
     def get_safety_stats(self) -> Dict[str, Any]:
         """

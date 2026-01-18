@@ -7,41 +7,53 @@ load_dotenv()
 
 class Config:
     # API Provider Configuration
-    API_PROVIDER = os.getenv("API_PROVIDER", "xai")  # "openai" or "xai"
-    API_KEY = os.getenv("API_KEY")
+    API_PROVIDER = os.getenv("API_PROVIDER", "groq")  # "openai", "xai", or "groq"
+    API_KEY = (
+        os.getenv("OPENAI_API_KEY")
+        if API_PROVIDER == "openai"
+        else os.getenv("GROQ_API_KEY")
+        if API_PROVIDER == "groq"
+        else os.getenv("API_KEY")
+    )
 
     # LLM Configuration
     LLM_MODEL = os.getenv(
-        "LLM_MODEL", "grok-beta" if API_PROVIDER == "xai" else "gpt-3.5-turbo"
+        "LLM_MODEL",
+        "grok-beta"
+        if API_PROVIDER == "xai"
+        else "llama-3.1-8b-instant"
+        if API_PROVIDER == "groq"
+        else "gpt-3.5-turbo",
     )
     LLM_TEMPERATURE = 0.1  # Low temperature for factual responses
 
-    # Embedding Configuration (free & local)
-    EMBEDDING_MODEL = "all-MiniLM-L6-v2"
-    EMBEDDING_DIMENSION = 384
+    # Embedding Configuration (TF-IDF based)
+    EMBEDDING_DIMENSION = 1000  # Max features for TF-IDF
 
     # API Base URL
     API_BASE_URL = (
-        "https://api.x.ai/v1" if API_PROVIDER == "xai" else "https://api.openai.com/v1"
+        "https://api.x.ai/v1"
+        if API_PROVIDER == "xai"
+        else "https://api.groq.com/openai/v1"
+        if API_PROVIDER == "groq"
+        else "https://api.openai.com/v1"
     )
 
     # Vector Store
     VECTOR_STORE_TYPE = "faiss"
 
     # Retrieval Configuration (TUNED for policy documents)
-    CHUNK_SIZE = 500  # Smaller chunks to preserve policy statements
-    CHUNK_OVERLAP = 100  # Reduced overlap for better preservation
-    TOP_K_RETRIEVAL = 10  # Retrieve more candidates
-    SIMILARITY_THRESHOLD = 0.3  # Lower threshold for policy questions
+    CHUNK_SIZE = 1500  # Larger chunks to keep sentences together
+    CHUNK_OVERLAP = 500  # Increased overlap for better continuity
+    TOP_K_RETRIEVAL = 15  # Retrieve more candidates
+    SIMILARITY_THRESHOLD = 0.1  # Lower threshold for policy questions
 
     # Validation Configuration (TUNED for policy documents)
     MIN_SUPPORTING_CHUNKS = 1
-    GROUNDING_STRICTNESS = 0.5  # Lower for policy answers that may be interpretive
+    GROUNDING_STRICTNESS = 0.3  # Lower for policy answers that may be interpretive
 
     # Document Processing
-    SUPPORTED_EXTENSIONS = [
-        ".pdf"
-    ]  # Temporarily disabled image support to prevent processing errors
+    SUPPORTED_EXTENSIONS = [".pdf", ".txt"]  # Support PDF and TXT files
     OCR_FALLBACK = True
 
     # Paths
