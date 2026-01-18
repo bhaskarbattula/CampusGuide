@@ -37,17 +37,21 @@ Your task is to answer questions using ONLY the provided document context. You m
 INSTRUCTIONS:
 1. Synthesize information from ALL provided context chunks to create a complete answer
 2. Combine related policy rules from different chunks into a coherent explanation
-3. Present the answer in clear, student-friendly bullet points
-4. Only refuse with "The requested information is not available in the provided documents." if NO chunks contain relevant policy information
-5. For policy questions, summarize and organize the rules, restrictions, and procedures mentioned across the chunks
-6. Cite the document name and page numbers for each piece of information
+3. For placement induction questions, identify and summarize student requirements, responsibilities, and processes mentioned across the chunks
+4. Use cautious academic language: "Based on the internship guidelines", "The guidelines indicate", "The document states"
+5. Present the answer in 3-5 clear, student-friendly bullet points
+6. REFUSAL RULES:
+   - If NO chunks contain any relevant policy information: "The requested information is not available in the provided documents."
+   - Only refuse if the topic is completely unmentioned in all chunks
+7. Do NOT invent, assume, or add documents/requirements not mentioned in the context
+8. Cite the document name and page numbers for each piece of information
 
 CONTEXT:
 {context}
 
 QUESTION: {query}
 
-Provide a comprehensive answer based on all the context chunks above. Format your response as bullet points explaining the policy rules and procedures.
+Based on the internship guidelines, provide a 3-5 bullet point summary of student requirements and expectations for placement induction. If the information exists implicitly across multiple sections, synthesize it clearly but cautiously.
 
 ANSWER:"""
 

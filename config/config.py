@@ -7,13 +7,16 @@ load_dotenv()
 
 class Config:
     # API Provider Configuration
-    API_PROVIDER = os.getenv("API_PROVIDER", "xai")  # "openai" or "xai"
+    API_PROVIDER = os.getenv("API_PROVIDER", "groq")  # "openai", "xai", or "groq"
     API_KEY = os.getenv("API_KEY")
 
     # LLM Configuration
-    LLM_MODEL = os.getenv(
-        "LLM_MODEL", "grok-beta" if API_PROVIDER == "xai" else "gpt-3.5-turbo"
-    )
+    if API_PROVIDER == "groq":
+        LLM_MODEL = os.getenv("LLM_MODEL", "llama-3.1-8b-instant")
+    elif API_PROVIDER == "xai":
+        LLM_MODEL = os.getenv("LLM_MODEL", "grok-beta")
+    else:  # openai
+        LLM_MODEL = os.getenv("LLM_MODEL", "gpt-3.5-turbo")
     LLM_TEMPERATURE = 0.1  # Low temperature for factual responses
 
     # Embedding Configuration (free & local)
@@ -21,9 +24,12 @@ class Config:
     EMBEDDING_DIMENSION = 384
 
     # API Base URL
-    API_BASE_URL = (
-        "https://api.x.ai/v1" if API_PROVIDER == "xai" else "https://api.openai.com/v1"
-    )
+    if API_PROVIDER == "groq":
+        API_BASE_URL = "https://api.groq.com/openai/v1"
+    elif API_PROVIDER == "xai":
+        API_BASE_URL = "https://api.x.ai/v1"
+    else:  # openai
+        API_BASE_URL = "https://api.openai.com/v1"
 
     # Vector Store
     VECTOR_STORE_TYPE = "faiss"
