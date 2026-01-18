@@ -129,3 +129,34 @@ def merge_dicts(dict1: Dict[str, Any], dict2: Dict[str, Any]) -> Dict[str, Any]:
         else:
             result[key] = value
     return result
+
+
+def is_list_question(query: str) -> bool:
+    """
+    Detect if a question is asking for a list or enumeration of items.
+
+    Args:
+        query: The user's question
+
+    Returns:
+        True if the question appears to ask for a list/enumeration
+    """
+    query_lower = query.lower()
+
+    list_indicators = [
+        "what documents",
+        "what are required",
+        "what should students",
+        "what documents do",
+        "what do students need",
+        "what items",
+        "what materials",
+        "what papers",
+        "what certificates",
+        "what copies",
+        "list of",
+        "required documents",
+        "necessary documents",
+    ]
+
+    return any(indicator in query_lower for indicator in list_indicators)

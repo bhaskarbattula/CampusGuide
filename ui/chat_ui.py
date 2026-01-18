@@ -12,124 +12,102 @@ class ChatUI:
         """Set the callback function for processing queries."""
         self.query_callback = callback
 
+    # --------------------------------------------------
+    # Main chat interface
+    # --------------------------------------------------
     def render_chat_interface(self, role: str):
-        """
-        Render the main chat interface.
-
-        Args:
-            role: Selected user role
-        """
         st.title("💬 Ask CampusGuide")
         st.markdown(f"*Role: {role.title()}*")
 
-        # Initialize chat history
         if "chat_history" not in st.session_state:
             st.session_state.chat_history = []
 
-        # Display chat history
         self._display_chat_history()
-
-        # Chat input
         self._render_chat_input(role)
 
+    # --------------------------------------------------
+    # Chat history
+    # --------------------------------------------------
     def _display_chat_history(self):
-        """Display the conversation history."""
         for message in st.session_state.chat_history[-self.config.MAX_CHAT_HISTORY :]:
             with st.chat_message(message["role"]):
                 st.markdown(message["content"])
 
-                # Display sources if available
-                if "sources" in message and message["sources"]:
+                if message.get("sources"):
                     self._display_sources(message["sources"])
+                elif message.get("source_note"):
+                    self._display_source_note(message["source_note"])
 
+    # --------------------------------------------------
+    # Chat input
+    # --------------------------------------------------
     def _render_chat_input(self, role: str):
-        """Render the chat input area."""
         if prompt := st.chat_input("Ask a question about ICFAI University policies..."):
-            # Add user message to history
+            # Store user message
             st.session_state.chat_history.append({"role": "user", "content": prompt})
 
-            # Display user message
             with st.chat_message("user"):
                 st.markdown(prompt)
 
-            # Generate and display assistant response
             with st.chat_message("assistant"):
                 with st.spinner("Searching documents..."):
-                    # This will be handled by the main app
-                    response_data = self._get_response(prompt, role)
+                    response = self._get_response(prompt, role)
 
-                    st.markdown(response_data["answer"])
+                    # Display answer
+                    st.markdown(response["answer"])
 
-                    if response_data.get("sources"):
-                        self._display_sources(response_data["sources"])
+                    # Display sources OR refusal explanation
+                    if response.get("sources"):
+                        self._display_sources(response["sources"])
+                    elif response.get("source_note"):
+                        self._display_source_note(response["source_note"])
 
-                    # Add to history
+                    # Save assistant response
                     st.session_state.chat_history.append(
                         {
                             "role": "assistant",
-                            "content": response_data["answer"],
-                            "sources": response_data.get("sources", []),
+                            "content": response["answer"],
+                            "sources": response.get("sources", []),
+                            "source_note": response.get("source_note"),
                         }
                     )
 
+    # --------------------------------------------------
+    # Callback to backend
+    # --------------------------------------------------
     def _get_response(self, prompt: str, role: str) -> Dict[str, Any]:
-        """
-        Get response from the RAG system via callback.
-
-        Args:
-            prompt: User query
-            role: User role
-
-        Returns:
-            Response data with answer and sources
-        """
         if self.query_callback:
             return self.query_callback(prompt, role)
-        else:
-            return {
-                "answer": "System not initialized. Please check your configuration.",
-                "sources": [],
-            }
 
+        return {
+            "answer": "System not initialized. Please check configuration.",
+            "sources": [],
+        }
+
+    # --------------------------------------------------
+    # Document sources display
+    # --------------------------------------------------
     def _display_sources(self, sources: List[Dict[str, Any]]):
-        """
-        Display source citations.
-
-        Args:
-            sources: List of source information
-        """
         with st.expander("📚 Sources", expanded=False):
             for i, source in enumerate(sources, 1):
-                st.markdown(f"**Source {i}:** {source.get('filename', 'Unknown')}")
-                if "pages" in source and source["pages"]:
-                    st.markdown(f"*Pages: {', '.join(map(str, source['pages']))}*")
-                if "excerpt" in source:
-                    st.markdown(f"```\n{source['excerpt'][:200]}...\n```")
-                st.markdown("---")
+                filename = source.get("filename", "Unknown document")
+                lines = source.get("lines", [])  # Changed from 'pages' to 'lines'
+                excerpt = source.get("excerpt", "")
 
-    def display_error(self, error_message: str):
-        """
-        Display an error message.
+                st.markdown(f"**Source {i}: {filename}**")
 
-        Args:
-            error_message: Error message to display
-        """
-        st.error(f"❌ {error_message}")
+                if lines:
+                    st.markdown(f"*Lines: {', '.join(map(str, lines))}*")
 
-    def display_warning(self, warning_message: str):
-        """
-        Display a warning message.
+                if excerpt:
+                    st.markdown(f"```\n{excerpt[:300]}\n```")
 
-        Args:
-            warning_message: Warning message to display
-        """
-        st.warning(f"⚠️ {warning_message}")
+                if i < len(sources):
+                    st.markdown("---")
 
-    def display_success(self, success_message: str):
-        """
-        Display a success message.
-
-        Args:
-            success_message: Success message to display
-        """
-        st.success(f"✅ {success_message}")
+    # --------------------------------------------------
+    # Refusal / explanation display
+    # --------------------------------------------------
+    def _display_source_note(self, note: str):
+        st.markdown("### 📚 Sources")
+        st.info(note)
