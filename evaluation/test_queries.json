@@ -1,0 +1,72 @@
+[
+  {
+    "query": "What are the requirements for internship eligibility?",
+    "expected_answer": "Students must maintain a minimum GPA of 3.0 and complete at least 90 credits to be eligible for internships.",
+    "role": "student",
+    "source_documents": ["academic_regulations.pdf", "internship_guidelines.pdf"],
+    "source_pages": [[5, 6], [2, 3]]
+  },
+  {
+    "query": "How many credits are required for graduation?",
+    "expected_answer": "Students must complete a minimum of 120 credits to graduate from the program.",
+    "role": "student",
+    "source_documents": ["academic_regulations.pdf"],
+    "source_pages": [[10]]
+  },
+  {
+    "query": "What is the process for faculty recruitment?",
+    "expected_answer": "Faculty recruitment involves application review, interviews, and approval by the academic committee.",
+    "role": "coordinator",
+    "source_documents": ["faculty_handbook.pdf"],
+    "source_pages": [[15, 16]]
+  },
+  {
+    "query": "Can parents access student grades?",
+    "expected_answer": "Parents can access student grades through the SIS portal with student consent.",
+    "role": "parent",
+    "source_documents": ["privacy_policy.pdf"],
+    "source_pages": [[8]]
+  },
+  {
+    "query": "What happens if I fail an exam?",
+    "expected_answer": "If you fail an exam, you may be eligible for a retake within two weeks of the result publication.",
+    "role": "student",
+    "source_documents": ["examination_policy.pdf"],
+    "source_pages": [[12]]
+  },
+  {
+    "query": "How do I apply for a scholarship?",
+    "expected_answer": "Scholarship applications must be submitted through the SIS portal with supporting documents.",
+    "role": "student",
+    "source_documents": ["financial_aid_policy.pdf"],
+    "source_pages": [[4, 5]]
+  },
+  {
+    "query": "What are the library borrowing rules?",
+    "expected_answer": "Students can borrow up to 5 books for 14 days, with possible renewal for another 14 days.",
+    "role": "faculty",
+    "source_documents": ["library_regulations.pdf"],
+    "source_pages": [[3]]
+  },
+  {
+    "query": "Is there information about campus security?",
+    "expected_answer": "The requested information is not available in the provided documents.",
+    "role": "student",
+    "source_documents": [],
+    "source_pages": []
+  },
+  {
+    "query": "What are the attendance requirements?",
+    "expected_answer": "Students must maintain at least 75% attendance in each course to be eligible for examinations.",
+    "role": "student",
+    "source_documents": ["attendance_policy.pdf"],
+    "source_pages": [[2]]
+  },
+  {
+    "query": "How can coordinators approve student requests?",
+    "expected_answer": "Coordinators can approve student requests through the faculty dashboard in the SIS portal.",
+    "role": "coordinator",
+    "source_documents": ["coordinator_manual.pdf"],
+    "source_pages": [[7, 8]]
+  }
+]
