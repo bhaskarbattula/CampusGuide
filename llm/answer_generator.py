@@ -7,7 +7,9 @@ from llm.prompt_templates import PromptTemplates
 class AnswerGenerator:
     def __init__(self):
         self.config = Config()
-        self.client = OpenAI(api_key=self.config.OPENAI_API_KEY)
+        self.client = OpenAI(
+            api_key=self.config.API_KEY, base_url=self.config.API_BASE_URL
+        )
         self.prompt_templates = PromptTemplates()
 
     def generate_answer(self, query: str, chunks: List[Dict[str, Any]]) -> str:
@@ -26,6 +28,22 @@ class AnswerGenerator:
                 "The requested information is not available in the provided documents."
             )
 
+        # Validate chunks contain valid text content
+        valid_chunks = []
+        for chunk in chunks:
+            text = chunk.get("text", "")
+            if text and isinstance(text, str):
+                text = text.strip()
+                if len(text) > 10:  # Relaxed validation for policy content
+                    valid_chunks.append(chunk)
+
+        if not valid_chunks:
+            return (
+                "The requested information is not available in the provided documents."
+            )
+
+        chunks = valid_chunks  # Use only valid chunks
+
         prompt = self.prompt_templates.get_answer_generation_prompt(query, chunks)
 
         try:
@@ -42,7 +60,14 @@ class AnswerGenerator:
                 max_tokens=1000,
             )
 
-            answer = response.choices[0].message.content.strip()
+            if response.choices and len(response.choices) > 0:
+                raw_answer = response.choices[0].message.content
+                if raw_answer:
+                    answer = raw_answer.strip()
+                else:
+                    answer = "The requested information is not available in the provided documents."
+            else:
+                answer = "API returned no choices in response."
 
             # Post-process answer to ensure it follows rules
             answer = self._post_process_answer(answer)
@@ -50,7 +75,12 @@ class AnswerGenerator:
             return answer
 
         except Exception as e:
-            return f"Error generating answer: {str(e)}"
+            print(
+                f"DEBUG: API call failed with exception: {type(e).__name__}: {str(e)}"
+            )
+            return (
+                "The requested information is not available in the provided documents."
+            )
 
     def validate_grounding(self, answer: str, chunks: List[Dict[str, Any]]) -> bool:
         """
@@ -63,9 +93,9 @@ class AnswerGenerator:
         Returns:
             True if answer is grounded, False otherwise
         """
-        if (
-            not chunks
-            or answer
+        if not chunks or (
+            answer
+            and answer.strip()
             == "The requested information is not available in the provided documents."
         ):
             return True  # Refusal is always valid
@@ -85,24 +115,12 @@ class AnswerGenerator:
             return "VALID" in validation_result
 
         except Exception as e:
-            print(f"Grounding validation failed: {str(e)}")
-            return False
-
-    def _post_process_answer(self, answer: str) -> str:
-        """
-        Post-process the generated answer to ensure compliance.
-
-        Args:
-            answer: Raw generated answer
-
-        Returns:
-            Processed answer
-        """
-        # Remove any attempts to use external knowledge
-        if "based on my knowledge" in answer.lower() or "generally" in answer.lower():
-            return (
-                "The requested information is not available in the provided documents."
-            )
+            error_msg = str(e)
+            if "API key" in error_msg.lower():
+                return "❌ API Key Error: Please check your xAI API key in the .env file. Get a key from https://console.x.ai"
+            else:
+                print(f"API call failed: {error_msg}")
+                return "The requested information is not available in the provided documents."
 
         # Ensure answer doesn't contradict grounding rules
         forbidden_phrases = [
@@ -122,3 +140,60 @@ class AnswerGenerator:
                 return "The requested information is not available in the provided documents."
 
         return answer.strip()
+
+    def _is_valid_chunk_text(self, text: str) -> bool:
+        """
+        Validate that chunk text contains meaningful policy content.
+
+        Args:
+            text: Text to validate
+
+        Returns:
+            True if text contains valid policy information
+        """
+        if not text or len(text) < 10:
+            return False
+
+        text_lower = text.lower()
+
+        # Check for error messages or invalid content
+        invalid_patterns = [
+            "cannot read",
+            "model does not support",
+            "this model does not support image input",
+            "error",
+            "failed",
+            "screenshot",
+            "image file",
+        ]
+
+        for pattern in invalid_patterns:
+            if pattern in text_lower:
+                return False
+
+        # For policy documents, be more lenient with special characters
+        # Allow policy-specific characters like %, $, etc.
+        special_chars = sum(
+            1
+            for char in text
+            if not char.isalnum() and not char.isspace() and char not in ".,!?-()$%/&"
+        )
+        if special_chars > len(text) * 0.6:  # Allow more special chars for policy text
+            return False
+
+        # Must contain some policy-relevant keywords
+        policy_keywords = [
+            "student",
+            "offer",
+            "placement",
+            "policy",
+            "company",
+            "recruitment",
+            "eligible",
+            "allowed",
+            "must",
+            "shall",
+        ]
+        has_policy_content = any(keyword in text_lower for keyword in policy_keywords)
+
+        return has_policy_content

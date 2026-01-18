@@ -37,6 +37,9 @@ class VectorStore:
 
         embeddings_array = np.array(embeddings, dtype=np.float32)
 
+        # Normalize embeddings for cosine similarity
+        faiss.normalize_L2(embeddings_array)
+
         if self.index is None:
             # Create new index
             dimension = embeddings_array.shape[1]
@@ -44,7 +47,7 @@ class VectorStore:
                 dimension
             )  # Inner product (cosine similarity)
 
-        # Add vectors to index
+        # Add normalized vectors to index
         self.index.add(embeddings_array)
         self.chunks.extend(valid_chunks)
 

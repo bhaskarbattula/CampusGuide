@@ -35,17 +35,19 @@ class PromptTemplates:
 Your task is to answer questions using ONLY the provided document context. You must NEVER use external knowledge, assumptions, or information not present in the given documents.
 
 INSTRUCTIONS:
-1. Answer questions strictly based on the provided context
-2. If the context does not contain sufficient information to answer the question, respond with exactly: "The requested information is not available in the provided documents."
-3. Cite specific documents and page numbers for every piece of information
-4. Do not make assumptions or inferences beyond what's explicitly stated
-5. Be concise but complete in your answers
-6. If asked about topics not covered in the documents, refuse to answer
+1. Synthesize information from ALL provided context chunks to create a complete answer
+2. Combine related policy rules from different chunks into a coherent explanation
+3. Present the answer in clear, student-friendly bullet points
+4. Only refuse with "The requested information is not available in the provided documents." if NO chunks contain relevant policy information
+5. For policy questions, summarize and organize the rules, restrictions, and procedures mentioned across the chunks
+6. Cite the document name and page numbers for each piece of information
 
 CONTEXT:
 {context}
 
 QUESTION: {query}
+
+Provide a comprehensive answer based on all the context chunks above. Format your response as bullet points explaining the policy rules and procedures.
 
 ANSWER:"""
 
