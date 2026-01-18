@@ -89,13 +89,13 @@ class TextSplitter:
         Split a document into chunks with metadata preservation.
 
         Args:
-            document: Document dict with 'text', 'pages', 'metadata'
+            document: Document dict with 'text', 'lines', 'metadata'
 
         Returns:
             List of chunk dictionaries with metadata
         """
         text = document["text"]
-        pages = document.get("pages", [])
+        lines = document.get("lines", [])  # Changed from 'pages' to 'lines'
         metadata = document.get("metadata", {})
 
         # Validate that we have meaningful text
@@ -124,51 +124,55 @@ class TextSplitter:
 
         chunk_docs = []
         for i, chunk in enumerate(valid_chunks):
-            # Find which pages this chunk spans
-            chunk_pages = self._find_chunk_pages(chunk, pages)
+            # Find which lines this chunk spans
+            chunk_lines = self._find_chunk_lines(chunk, lines)
 
             chunk_doc = {
                 "chunk_id": f"{metadata.get('filename', 'unknown')}_chunk_{i}",
                 "text": chunk,
-                "pages": chunk_pages,
+                "lines": chunk_lines,  # Changed from 'pages' to 'lines'
                 "metadata": {
                     **metadata,
                     "chunk_index": i,
                     "total_chunks": len(valid_chunks),
-                    "start_page": chunk_pages[0] if chunk_pages else None,
-                    "end_page": chunk_pages[-1] if chunk_pages else None,
+                    "start_line": chunk_lines[0]
+                    if chunk_lines
+                    else None,  # Changed from page to line
+                    "end_line": chunk_lines[-1]
+                    if chunk_lines
+                    else None,  # Changed from page to line
                 },
             }
             chunk_docs.append(chunk_doc)
 
         return chunk_docs
 
-    def _find_chunk_pages(self, chunk: str, pages: List[Tuple[int, str]]) -> List[int]:
+    def _find_chunk_lines(self, chunk: str, lines: List[Tuple[int, str]]) -> List[int]:
         """
-        Find which pages a chunk appears on.
+        Find which lines a chunk appears on.
 
         Args:
             chunk: Text chunk
-            pages: List of (page_num, page_text) tuples
+            lines: List of (line_num, line_text) tuples
 
         Returns:
-            List of page numbers the chunk spans
+            List of line numbers the chunk spans
         """
-        chunk_pages = []
+        chunk_lines = []
         chunk_lower = chunk.lower()
 
-        for page_num, page_text in pages:
-            if page_text.lower() in chunk_lower or any(
-                word in page_text.lower() for word in chunk_lower.split()[:5]
+        for line_num, line_text in lines:
+            if line_text.lower() in chunk_lower or any(
+                word in line_text.lower() for word in chunk_lower.split()[:5]
             ):
-                # More sophisticated check: check if significant portion of chunk is in page
-                page_words = set(page_text.lower().split())
+                # More sophisticated check: check if significant portion of chunk is in line
+                line_words = set(line_text.lower().split())
                 chunk_words = set(chunk_lower.split())
-                overlap = len(page_words.intersection(chunk_words))
+                overlap = len(line_words.intersection(chunk_words))
                 if overlap > len(chunk_words) * 0.3:  # 30% overlap
-                    chunk_pages.append(page_num)
+                    chunk_lines.append(line_num)
 
-        return sorted(list(set(chunk_pages)))
+        return sorted(list(set(chunk_lines)))
         """
         Check if a chunk contains invalid or problematic content.
 

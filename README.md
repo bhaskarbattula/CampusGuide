@@ -1,12 +1,32 @@
 # CampusGuide
 
-A production-ready, hallucination-safe Retrieval-Augmented Generation (RAG) system for ICFAI University that answers questions strictly using official documents.
+## Project Description
+
+CampusGuide is a hallucination-safe Retrieval-Augmented Generation (RAG) application built with Streamlit, designed specifically for academic governance at ICFAI University. It provides accurate, document-grounded answers to questions about internship guidelines, placement policies, and academic regulations. By leveraging FAISS vector search, Sentence-Transformer embeddings, and Groq's llama-3.1-8b-instant model, CampusGuide ensures zero hallucinations through strict context-only generation and multi-layered validation. This makes it ideal for high-stakes academic environments where accuracy and traceability are paramount. As a hackathon-ready project, it demonstrates production-grade AI safety practices while being easily deployable and maintainable.
+
+## Tags / Keywords
+
+- RAG (Retrieval-Augmented Generation)
+- Streamlit
+- Groq LLM
+- FAISS Vector Search
+- Sentence Transformers
+- NLP (Natural Language Processing)
+- PDF Question Answering
+- Hallucination-Safe AI
+- Academic AI Assistant
+- Policy QA System
+- Document Grounded Responses
+- Hackathon Project
+- Production-Ready AI
+- Academic Governance
+- Zero-Hallucination AI
 
 ---
 
 ## Overview
 
-CampusGuide is a Streamlit-based RAG application designed for high-risk academic governance domains where accuracy and traceability are critical.  
+CampusGuide is a Streamlit-based RAG application designed for high-risk academic governance domains where accuracy and traceability are critical.
 The system prevents hallucinations by grounding all responses in official ICFAI University documents and provides explicit source citations.
 
 ---
@@ -16,10 +36,9 @@ The system prevents hallucinations by grounding all responses in official ICFAI 
 ### RAG Pipeline
 
 1. **Document Ingestion**
-   - PDF and image file support (PNG, JPG, JPEG, BMP, TIFF)
-   - PDF loading with OCR fallback
-   - Direct OCR for image files
-   - Text cleaning (header/footer removal)
+   - Plain text file support (.txt files only)
+   - UTF-8 text loading with line number tracking
+   - Text cleaning and validation
    - Chunking with configurable overlap
    - Free local embedding generation (Sentence Transformers)
 
@@ -31,7 +50,7 @@ The system prevents hallucinations by grounding all responses in official ICFAI 
 3. **Generation**
    - Context-only LLM prompting
    - Low temperature for factual responses
-   - xAI Grok model (cost-effective alternative to GPT)
+   - Groq LLM (llama-3.1-8b-instant model)
 
 4. **Validation**
    - Retrieval confidence gating
@@ -78,10 +97,10 @@ The system prevents hallucinations by grounding all responses in official ICFAI 
    pip install -r requirements.txt
 
 3. Set up environment variables:
-    Edit `.env` with your xAI API key:
+    Edit `.env` with your Groq API key:
 
     ```bash
-    # Only xAI API key needed (completely free embeddings)
+    # Only Groq API key needed (completely free embeddings)
     API_PROVIDER=xai
     API_KEY=your_xai_api_key_here  # Get from https://x.ai
     ```

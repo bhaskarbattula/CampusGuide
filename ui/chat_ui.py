@@ -44,9 +44,7 @@ class ChatUI:
     def _render_chat_input(self, role: str):
         if prompt := st.chat_input("Ask a question about ICFAI University policies..."):
             # Store user message
-            st.session_state.chat_history.append(
-                {"role": "user", "content": prompt}
-            )
+            st.session_state.chat_history.append({"role": "user", "content": prompt})
 
             with st.chat_message("user"):
                 st.markdown(prompt)
@@ -93,13 +91,13 @@ class ChatUI:
         with st.expander("📚 Sources", expanded=False):
             for i, source in enumerate(sources, 1):
                 filename = source.get("filename", "Unknown document")
-                pages = source.get("pages", [])
+                lines = source.get("lines", [])  # Changed from 'pages' to 'lines'
                 excerpt = source.get("excerpt", "")
 
                 st.markdown(f"**Source {i}: {filename}**")
 
-                if pages:
-                    st.markdown(f"*Pages: {', '.join(map(str, pages))}*")
+                if lines:
+                    st.markdown(f"*Lines: {', '.join(map(str, lines))}*")
 
                 if excerpt:
                     st.markdown(f"```\n{excerpt[:300]}\n```")

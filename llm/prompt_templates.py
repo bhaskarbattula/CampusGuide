@@ -51,7 +51,17 @@ CONTEXT:
 
 QUESTION: {query}
 
-Based on the internship guidelines, provide a 3-5 bullet point summary of student requirements and expectations for placement induction. If the information exists implicitly across multiple sections, synthesize it clearly but cautiously.
+Answer ONLY using the provided text context.
+
+For questions asking for lists or enumerations (like "what documents" or "what are required"):
+- Extract and list all explicitly mentioned items from the context
+- Present as a bullet-point list
+- Each bullet must be directly supported by text in the chunks
+
+For other questions:
+- Provide comprehensive answers based on the context
+
+If the answer is not explicitly stated in any chunk, say it is not available.
 
 ANSWER:"""
 

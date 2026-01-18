@@ -28,6 +28,23 @@ class Sidebar:
 
             st.markdown("---")
 
+            # File upload section
+            st.subheader("📤 Upload Knowledge Files")
+            uploaded_files = st.file_uploader(
+                "Upload TXT files to add to knowledge base",
+                type=["txt"],
+                accept_multiple_files=True,
+                help="Upload text files containing academic policies and guidelines",
+            )
+
+            if uploaded_files:
+                # This will be handled in app.py
+                st.session_state["uploaded_files"] = uploaded_files
+                if st.button("Process Uploaded Files"):
+                    st.rerun()
+
+            st.markdown("---")
+
             # Information section
             st.subheader("ℹ️ About")
             st.markdown("""
@@ -47,8 +64,9 @@ class Sidebar:
                 st.markdown("---")
                 st.subheader("📊 System Stats")
                 stats = st.session_state["retrieval_stats"]
-                st.metric("Total Documents", stats.get("total_chunks", 0))
-                st.metric("Vector Store Size", stats.get("index_size", 0))
+                vs_stats = stats.get("vector_store_stats", {})
+                st.metric("Processed Chunks", vs_stats.get("total_chunks", 0))
+                st.metric("Vector Store Size", vs_stats.get("index_size", 0))
 
             # Footer
             st.markdown("---")

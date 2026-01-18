@@ -46,12 +46,12 @@ class CampusGuideApp:
             logger.info("Vector store loaded")
         else:
             raw_dir = self.config.DATA_RAW_PATH
-            pdfs_exist = os.path.exists(raw_dir) and any(
-                f.lower().endswith(".pdf") for f in os.listdir(raw_dir)
+            txts_exist = os.path.exists(raw_dir) and any(
+                f.lower().endswith(".txt") for f in os.listdir(raw_dir)
             )
 
-            if pdfs_exist:
-                logger.info("No vector store found. Auto-ingesting PDFs...")
+            if txts_exist:
+                logger.info("No vector store found. Auto-ingesting TXT files...")
                 self.ingest_documents()
                 st.session_state["system_ready"] = True
             else:
@@ -61,11 +61,64 @@ class CampusGuideApp:
 
     # ---------------- INGESTION ---------------- #
 
+    def handle_file_uploads(self, uploaded_files):
+        """Handle file uploads from Streamlit UI."""
+        if not uploaded_files:
+            return False
+
+        raw_dir = self.config.DATA_RAW_PATH
+        os.makedirs(raw_dir, exist_ok=True)
+
+        saved_files = []
+        for uploaded_file in uploaded_files:
+            # Validate file type
+            if not uploaded_file.name.lower().endswith(".txt"):
+                continue
+
+            # Create unique filename to avoid overwrites
+            base_name = os.path.splitext(uploaded_file.name)[0]
+            ext = ".txt"
+            counter = 0
+            file_path = os.path.join(raw_dir, uploaded_file.name)
+
+            while os.path.exists(file_path):
+                counter += 1
+                file_path = os.path.join(raw_dir, f"{base_name}_{counter}{ext}")
+
+            # Save file
+            try:
+                with open(file_path, "wb") as f:
+                    f.write(uploaded_file.getbuffer())
+                saved_files.append(file_path)
+                logger.info(f"Saved uploaded file: {file_path}")
+            except Exception as e:
+                logger.error(f"Failed to save file {uploaded_file.name}: {e}")
+                continue
+
+        if saved_files:
+            # Trigger full ingestion to rebuild vector store with all files
+            logger.info(
+                f"Uploaded {len(saved_files)} files, rebuilding knowledge base..."
+            )
+            self.ingest_documents()
+            return True
+
+        return False
+
     def ingest_documents(self):
         raw_dir = self.config.DATA_RAW_PATH
+
+        # Ensure processed directory exists
+        processed_dir = self.config.DATA_PROCESSED_PATH
+        os.makedirs(processed_dir, exist_ok=True)
+
         logger.info("Starting document ingestion...")
 
-        documents = self.document_loader.load_multiple_pdfs(raw_dir)
+        # Clear existing vector store to rebuild fresh
+        self.vector_store.clear()
+        logger.info("Cleared existing vector store for fresh rebuild")
+
+        documents = self.document_loader.load_multiple_documents(raw_dir)
         if not documents:
             logger.warning("No documents found")
             return
@@ -169,12 +222,28 @@ class CampusGuideApp:
             layout="wide",
         )
 
-        role = self.sidebar.render()
+        # Handle file uploads first
+        if "uploaded_files" in st.session_state and st.session_state["uploaded_files"]:
+            with st.spinner("Processing uploaded files..."):
+                success = self.handle_file_uploads(st.session_state["uploaded_files"])
+                if success:
+                    st.success("✅ Files uploaded and processed successfully!")
+                    st.session_state["uploaded_files"] = []  # Clear after processing
+                    st.rerun()  # Refresh to update stats
+                else:
+                    st.error("❌ Failed to process uploaded files.")
 
+        # Auto-ingest documents if not ready (for initial load or restart)
         if not st.session_state.get("system_ready"):
-            st.error("No documents available. Please add PDFs to data/raw/")
-            return
+            with st.spinner("Loading documents..."):
+                self.ingest_documents()
+            if not st.session_state.get("system_ready"):
+                st.error(
+                    "❌ Failed to load documents. Please add .txt files to data/raw/ and restart the application."
+                )
+                return
 
+        role = self.sidebar.render()
         self.chat_ui.set_query_callback(self.process_query)
         self.chat_ui.render_chat_interface(role)
 
@@ -185,4 +254,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

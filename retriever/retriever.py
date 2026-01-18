@@ -129,10 +129,14 @@ class Retriever:
     def get_retrieval_stats(self) -> Dict[str, Any]:
         """
         Get retrieval statistics.
+        Ensures vector store is loaded before returning stats.
 
         Returns:
             Statistics dictionary
         """
+        # Ensure vector store is loaded (in case it was updated by ingestion)
+        self.vector_store.load()
+
         return {
             "vector_store_stats": self.vector_store.get_stats(),
             "similarity_threshold": self.config.SIMILARITY_THRESHOLD,

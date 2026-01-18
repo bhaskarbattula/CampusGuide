@@ -45,10 +45,7 @@ class Config:
     GROUNDING_STRICTNESS = 0.5  # Lower for policy answers that may be interpretive
 
     # Document Processing
-    SUPPORTED_EXTENSIONS = [
-        ".pdf"
-    ]  # Temporarily disabled image support to prevent processing errors
-    OCR_FALLBACK = True
+    SUPPORTED_EXTENSIONS = [".txt"]  # Plain text files only
 
     # Paths
     DATA_RAW_PATH = "data/raw/"

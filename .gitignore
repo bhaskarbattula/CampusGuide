@@ -1,54 +1,25 @@
-# ===============================
 # Python
-# ===============================
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 
-# ===============================
-# Virtual Environments
-# ===============================
-.venv/
+# Virtual environments
 venv/
-env/
+.venv/
 
-# ===============================
-# Streamlit
-# ===============================
-.streamlit/
-
-# ===============================
-# Environment Variables
-# ===============================
+# Environment variables
 .env
 
-# ===============================
-# Logs
-# ===============================
-*.log
-
-# ===============================
-# Vector Stores / Generated Data
-# ===============================
+# Vector store & processed data
 data/processed/
 *.faiss
 *.pkl
 
-# ===============================
-# Raw PDFs (Institution Data)
-# ===============================
-data/raw/*.pdf
-
-# ===============================
-# OS / Editor Files
-# ===============================
+# OS / Editor
 .DS_Store
-Thumbs.db
 .vscode/
 .idea/
 
-# ===============================
-# Jupyter (if any)
-# ===============================
-.ipynb_checkpoints/
+# Logs
+*.log
