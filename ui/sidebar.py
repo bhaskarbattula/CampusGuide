@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 from config.config import Config
 
 
@@ -29,6 +30,7 @@ class Sidebar:
             st.markdown("---")
 
             # File upload section
+<<<<<<< HEAD
             st.subheader("📤 Upload Knowledge Files")
             uploaded_files = st.file_uploader(
                 "Upload TXT files to add to knowledge base",
@@ -42,6 +44,30 @@ class Sidebar:
                 st.session_state["uploaded_files"] = uploaded_files
                 if st.button("Process Uploaded Files"):
                     st.rerun()
+=======
+            st.subheader("📁 Upload Documents")
+            uploaded_file = st.file_uploader(
+                "Upload PDF or TXT files",
+                type=["pdf", "txt"],
+                help="Upload university documents to expand the knowledge base"
+            )
+            
+            if uploaded_file is not None:
+                self._handle_file_upload(uploaded_file)
+
+            # Current documents
+            st.subheader("📚 Current Documents")
+            raw_dir = self.config.DATA_RAW_PATH
+            if os.path.exists(raw_dir):
+                files = [f for f in os.listdir(raw_dir) if f.lower().endswith(('.pdf', '.txt'))]
+                if files:
+                    for file in files:
+                        st.write(f"• {file}")
+                else:
+                    st.write("*No documents uploaded yet*")
+            else:
+                st.write("*No documents uploaded yet*")
+>>>>>>> bhaskar
 
             st.markdown("---")
 
@@ -72,4 +98,41 @@ class Sidebar:
             st.markdown("---")
             st.markdown("*Built with safety and accuracy in mind*")
 
-        return role
+        return role or "student"  # Default to student if None
+
+    def _handle_file_upload(self, uploaded_file):
+        """
+        Handle file upload and re-ingestion.
+        
+        Args:
+            uploaded_file: Streamlit uploaded file object
+        """
+        import tempfile
+        import shutil
+        
+        # Create raw directory if it doesn't exist
+        raw_dir = self.config.DATA_RAW_PATH
+        os.makedirs(raw_dir, exist_ok=True)
+        
+        # Save uploaded file
+        file_path = os.path.join(raw_dir, uploaded_file.name)
+        
+        # Check if file already exists
+        if os.path.exists(file_path):
+            st.warning(f"File '{uploaded_file.name}' already exists. It will be overwritten.")
+        
+        # Save the file
+        with open(file_path, "wb") as f:
+            f.write(uploaded_file.getbuffer())
+        
+        st.success(f"✅ Uploaded {uploaded_file.name}")
+        
+        # Trigger re-ingestion
+        if st.button("🔄 Re-ingest Documents", key="reingest"):
+            with st.spinner("Re-ingesting documents..."):
+                # Import here to avoid circular imports
+                from app import CampusGuideApp
+                app = CampusGuideApp()
+                app.ingest_documents()
+                st.success("✅ Documents re-ingested successfully!")
+                st.rerun()

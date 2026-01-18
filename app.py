@@ -46,6 +46,7 @@ class CampusGuideApp:
             logger.info("Vector store loaded")
         else:
             raw_dir = self.config.DATA_RAW_PATH
+<<<<<<< HEAD
             txts_exist = os.path.exists(raw_dir) and any(
                 f.lower().endswith(".txt") for f in os.listdir(raw_dir)
             )
@@ -55,6 +56,19 @@ class CampusGuideApp:
                 self.ingest_documents()
                 st.session_state["system_ready"] = True
             else:
+=======
+            supported_files_exist = os.path.exists(raw_dir) and any(
+                f.lower().endswith(tuple(self.config.SUPPORTED_EXTENSIONS)) 
+                for f in os.listdir(raw_dir)
+            )
+
+            if supported_files_exist:
+                logger.info("Documents found in raw directory. Auto-ingesting documents...")
+                self.ingest_documents()
+                st.session_state["system_ready"] = True
+            else:
+                logger.warning("No supported documents found for ingestion")
+>>>>>>> bhaskar
                 st.session_state["system_ready"] = False
 
         st.session_state["retrieval_stats"] = self.retriever.get_retrieval_stats()
@@ -128,6 +142,11 @@ class CampusGuideApp:
             doc["text"] = self.text_cleaner.clean_text(doc["text"])
             all_chunks.extend(self.text_splitter.split_document(doc))
 
+        # Fit the embedder on all chunk texts first
+        chunk_texts = [chunk["text"] for chunk in all_chunks]
+        self.embedder.fit_on_texts(chunk_texts)
+
+        # Then embed the chunks
         embedded_chunks = self.embedder.embed_chunks(all_chunks)
         self.vector_store.add_chunks(embedded_chunks)
         self.vector_store.save()

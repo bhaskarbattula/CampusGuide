@@ -17,7 +17,7 @@ class ChatUI:
     # --------------------------------------------------
     def render_chat_interface(self, role: str):
         st.title("💬 Ask CampusGuide")
-        st.markdown(f"*Role: {role.title()}*")
+        st.markdown(f"*Role: {role.title() if role else 'Unknown'}*")
 
         if "chat_history" not in st.session_state:
             st.session_state.chat_history = []
