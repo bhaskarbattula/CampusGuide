@@ -45,7 +45,6 @@ class AnswerGenerator:
 
             answer = response.choices[0].message.content.strip()
 
-<<<<<<< HEAD
             return self._post_process_answer(answer)
 
         except Exception as e:
@@ -55,61 +54,6 @@ class AnswerGenerator:
     def _post_process_answer(self, answer: str) -> str:
         if not answer:
             return REFUSAL_TEXT
-=======
-            # Post-process answer to ensure it follows rules
-            answer = self._post_process_answer(answer)
-
-            # Special case: if refusing but chunks contain relevant info for documents query
-            if (answer == "The requested information is not available in the provided documents." and 
-                "documents" in query.lower() and 
-                any("passport" in chunk['text'].lower() or "pan" in chunk['text'].lower() or "certificate" in chunk['text'].lower() for chunk in chunks)):
-                answer = """**Documents Required During Induction:**
-
-- **Passport** (most companies insist on it during induction)
-- **PAN card** (students are expected to apply for it at the earliest)
-- **Resume** (minimum of 3 copies)
-- **Original certificates** (photocopies to be carried)
-- **5 passport size photographs**
-
-**Source:** placements.txt (Sections 11 and 14)"""
-
-            return answer
-
-        except Exception as e:
-            logger.error(
-                f"API call failed with exception: {type(e).__name__}: {str(e)}"
-            )
-            return (
-                "The requested information is not available in the provided documents."
-            )
-
-    def _post_process_answer(self, answer: str) -> str:
-        """
-        Post-process the generated answer to clean it up.
-        
-        Args:
-            answer: Raw answer from LLM
-            
-        Returns:
-            Cleaned answer
-        """
-        if not answer:
-            return "The requested information is not available in the provided documents."
-        
-        # Remove any extra whitespace
-        answer = answer.strip()
-        
-        # Ensure it ends with proper punctuation if it's not a refusal
-        if answer != "The requested information is not available in the provided documents.":
-            if not answer.endswith(('.', '!', '?')):
-                answer += '.'
-        
-        return answer
-
-    def validate_grounding(self, answer: str, chunks: List[Dict[str, Any]]) -> bool:
-        """
-        Validate if the answer is properly grounded in the context.
->>>>>>> bhaskar
 
         forbidden = [
             "i think",

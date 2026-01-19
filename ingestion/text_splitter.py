@@ -24,29 +24,29 @@ class TextSplitter:
 
         # First, try to split on numbered points like "1. ", "2. ", etc.
         # This works well for policy documents with numbered rules
-        point_chunks = re.split(r'(\n\d+\.\s)', text)
-        
+        point_chunks = re.split(r"(\n\d+\.\s)", text)
+
         # Recombine: each chunk starts with the number
         chunks = []
         current_chunk = ""
         for part in point_chunks:
-            if re.match(r'\n\d+\.\s', part):
+            if re.match(r"\n\d+\.\s", part):
                 if current_chunk:
                     chunks.append(current_chunk.strip())
                 current_chunk = part
             else:
                 current_chunk += part
-        
+
         if current_chunk:
             chunks.append(current_chunk.strip())
-        
+
         # If no numbered points found, fall back to character-based splitting
         if len(chunks) <= 1:
             return self._split_by_characters(text, chunk_size, overlap)
-        
+
         # Filter out very short chunks
         chunks = [chunk for chunk in chunks if len(chunk) > 50]
-        
+
         return chunks
 
     def _split_by_characters(

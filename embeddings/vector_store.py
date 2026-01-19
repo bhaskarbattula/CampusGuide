@@ -40,10 +40,7 @@ class VectorStore:
 
         embeddings_array = np.array(embeddings, dtype=np.float32)
 
-        # Normalize for cosine similarity
-        norms = np.linalg.norm(embeddings_array, axis=1, keepdims=True)
-        norms[norms == 0] = 1  # Avoid division by zero
-        embeddings_array = embeddings_array / norms
+        # Sentence Transformers already provide normalized embeddings, no need to normalize again
 
         if self.index is None:
             # Create new index
@@ -76,10 +73,7 @@ class VectorStore:
 
         query_array = np.array([query_embedding], dtype=np.float32)
 
-        # Normalize query for cosine similarity
-        norm = np.linalg.norm(query_array)
-        if norm > 0:
-            query_array = query_array / norm
+        # Sentence Transformers normalize queries automatically
 
         # Search
         scores, indices = self.index.search(query_array, min(top_k, self.index.ntotal))
@@ -143,5 +137,5 @@ class VectorStore:
         return {
             "total_chunks": len(self.chunks),
             "index_size": self.index.ntotal if self.index else 0,
-            "dimension": self.config.EMBEDDING_DIMENSION,
+            "dimension": self.index.d if self.index else 0,
         }

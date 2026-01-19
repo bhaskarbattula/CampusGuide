@@ -1,0 +1,1020 @@
+Internship Program I Checklist
+Name: _________________________________________
+ID No: _________________________________________
+IP II Station: _________________________________________
+Duration: From ______________ To ________________
+Faculty of Science & Technology
+IFHE University, Hyderabad
+(A Deemed University under Section 3 of UGC Act, 1956)To:
+Internship Program – I Students
+Dear Friends,
+This booklet consists of a series of Internship Assignments, which basically aim at
+providing first exposure to the activities of the professional world. These assignments have been
+broadly classified into several groups, e.g. Product Survey, Product Specification, Raw Material
+Production, etc.
+As you would appreciate almost all of these areas would require application of your
+understanding of the basic physical, social and engineering science fundamentals, as also your
+skills acquired in terms of analysis and application-oriented courses, towards the task of
+systematically studying the nature of real life problem complexes.
+It is suggested that you could look at these assignments as kind of lead questions of tasks
+or some kind of a checklist. While going through the Internship Program be intellectually alert
+and seek the understanding that is obvious to come from completing of such assignments. In the
+process it is important that you merely do not approach the professional experts and the faculty
+with an eternal hope of being spoon-fed.
+Beyond the years of university life, there is a long period of professional activity awaiting
+your involvement which will be basically in terms of identifying a problem, your ability to
+research the issues as also the parameters behind the problem in the presence of heavy
+uncertainties and insufficient data-base and your ability to then intelligently abstract the real
+essence of the problem.
+These activities require you to have a dialogue with the knowledgeable people from the
+field, thus in turn improving your information as also database so as to get geared to evolve the
+strategy and techniques to resolve the problem at hand. It is expected that your will make every
+effort to simulate this reality of life as you go through the lead tasks. It is in this context that it is
+visualized, that the efforts made here would be of particular significance to IP-I students in
+strengthening the professional personality.
+Finally, irrespective of your discipline/stream, you must try to seek answers to the entire
+spectrum of assignments. This time tested checklist has been prepared based on our discussions
+with various professional experts. After completing your Internship program, I am sure you will
+have valuable suggestions to make in improving the checklist. Please feel to communicate all
+such suggestions to the undersigned.
+I take this opportunity to wish you best of stay at your respective IP station. I am
+confident that the IP-I Program would be intellectually challenging and you would benefit
+professionally.
+Internship Programs Chairperson
+Faculty of Science & Technology, IFHE UniversityINTRODUCTION
+The assignments have been broadly classified into the following groups.
+Product Survey
+Product Specification
+Raw Materials
+Production Process
+Equipment
+Piping, Valves Pumps & Motors
+Capacity Utilization
+Inventory
+Quality Control
+Organizational Structure
+Management Information System
+Business communication
+Research & Development (R& D)
+Materials of Construction
+Instrumentation & Controls
+Waste Management
+Engineering Design & Development Consultancy
+Design Decisions
+(a) Plant Size, (b) Site Location
+(d) Site Layout (e) Basic Plant Design
+(g) Plot Plan
+(h) Plant Layout
+(c) Transportation Route
+(f) Plant Site,
+(i) Township Foundation
+& Superstructure
+Design Calculations
+Utilities
+Drawings & Map Reading
+Project Engineering
+Infrastructure Facilities
+Plant Economy
+Information Processing Center
+Lead queries/guidelines for the above assignments towards seeking the first exposure to
+the professional world is given below in this checklist.1. PRODUCT SURVEY
+1.0 What are the various products pursued by the professional / industrial unit where you
+are attending your IP-I courses?
+1.1 Perhaps, in the simplest possible manner an industrial unit can be defined as a system that
+transforms raw material(s) into product(s). In this context, as all of us are aware, the
+production and manufacturing units such as copper, zinc, fertilizer or steel complexes or
+various manufacturing plants or electrical, mechanical or chemical goods producing
+factories or electrical-power plants etc. come under the category of the industrial units.
+As a linear extrapolation of the above thought process, can we also describe research
+laboratories or banks or publishing-houses as production units and accordingly classify
+them under the group of industrial units? If yeas and if the host-organization where you
+are attending your IP comes under this category, describe the various products pursued by
+the host-organization.
+1.2 Describe a short historical sketch of the product (s) pursued by the industrial unit being
+studies in terms of its (products) market growth details?
+1.3 Who are the customers for the products (s)?
+1.4 On the basis of past date and using the technique of the mathematical modeling, obtain
+the product demand and supply estimates for the coming decade. This exercise can be
+done at the national regional, state as well as local levels.
+1.5 Give industrial sector wise as also geographical province-wise breakdown of total
+product demand.
+1.6 What are five-year plan estimates for the product demand?
+2. PRODUCT SPECIFICATION
+2.1
+Give details pertaining to the various raw materials incorporated in each of the products
+in terms of quantity, specifications, availability, purchasing as also transportation
+cost etc.
+3. RAW MATERIALS
+3.1 State details pertaining to the various raw materials incorporated in each of the products in
+terms of quantity, specifications, availability, purchasing as also transportation cost, etc.
+3.2 If the industrial unit under reference is a mining scheme, then study and sketch the
+geological map of the area from where the raw-material deposits are being obtained.
+3.3 Describe various techniques for quantifying the proven reserves of the raw materials
+under reference?
+3.4 What are the various regions in India with known/proven reserves of the raw materials
+under reference?3.5 Are there any raw materials from the ones described in the assignment 3.1 which are
+imported? Give the details.
+4. PRODUCTION PROCESS
+4.1 Draw a schematic flow-diagram of the product manufacturing process.
+4.2 Briefly describe each stage in the production/manufacturing process.
+4.3 Draw the basic process flow sheet containing only major and basic vessels /sub-
+systems/equipment and for each of these terms provide information in terms of details
+like.
+(i) The description of the item.
+(ii) Size
+(iii) Material of construction
+(iv) Operating temperature
+(v) Operating pressure
+(vi) Power requirements (e.g. say agitation)
+(vii) Instruments accompanying,
+(viii)Services (water, steam and so on) needed, etc.
+4.4 In continuation of 4.3 draw process flow sheet for each of the subsystems, thus indicating
+every component of the process.
+4.5 What do you understand by the term ‘Piping & Instrumentation (P&I) Diagrams’ for a
+process plant? Study as many P&I Diagrams as possible.
+5.
+EQUIPMENT
+5.1 For as many equipment of the plants as possible obtain details like:
+(i) Name of the manufacturer,
+(ii) Specifications,
+(iii) Materials of construction,
+(iv) Cost
+(v) Delivery time,
+(vi) Transportation problems, if any, etc.
+5.2 If the IP-I station attended by you happens to be a mining project what are the various
+equipments needed for the quarry operations? For these equipments also obtain various
+information details as the ones listed in (5.1).
+5.3 Give names of as many manufacturers as possible from whom the industrial production
+unit can be obtained on a turnkey basis.
+5.4 The process of inviting and selection of bids plays an important role in the procurement
+of equipments in the industry. Describe this process in its entirety.
+5.5 List major mechanical as also electrical equipment in a modern power station. (apart
+from on-the-spot study, any reference book on a modern power plant practice as ‘theproject report’ for the particular power plant, where, say, the IP-I station is being hosted
+will constitute a ready resource material to obtain the required information).
+5.6 At the industrial unit under reference, seek as many opportunities as possible to be
+exposed to details such as:
+(i) Preparation of tender specification,
+(ii) Reviewing of a vendor’s drawings
+(iii) Tender evaluation, etc. (Normally, you should be able to find a typical tender notice
+in any issue of a national daily).
+5.7 Study the Process of preparing specifications for the equipment procurement
+6. PIPING, VALVES, PUMPS & MOTORS
+6.1 In case the industrial hosting IP-I has piping installations, study and sketch the same.
+6.2 What are the types, sizes and applications of various valves that have been used in the
+industrial unit under reference?
+6.3 Study an electrical connections diagram for a power plant.
+6.4 What are the various electric motors and drives used in the plant under consideration?
+6.5 Discuss the types and locations of electrical meters in the plant under reference.
+6.6 List various types and sizes of pumps
+consideration.
+that have been used in the plant under
+6.7 Compare the centrifugal and reciprocating pumps in terms of their applications and
+describe various factors that must be kept in mind while choosing their sizes and
+capacities. Illustrate the said factors with the help of examples from the plant.
+6.8 What do you understand by terms such as Service water pump, Chemical injection
+pumps, Ash plant pump and Fire Service ump?
+7.
+CAPACITY UTILISATION
+7.1
+What is the capacity of the total plant/shop/section under reference?
+7.2 What are the units in which the capacity is measured? For example capacity of a
+locomotive manufacturing plant or pumps manufacturing plant or cycle producing
+plant may be measured in numbers, while capacities of plants producing castings or
+forgings or structures or cement may be measured in weight. (Against this the
+capacity of a cloth or pipe manufacturing plant would be obtained in meters and so on).
+7.3 For the plant under reference, what is the criterion for the determination of the plant
+capacity? Further, obtain the number of shifts worked and the number of staff employed
+in each shift. Also, explore the existence of any critical equipment(s) in the plant and list
+the same.7.4 The criterion for the determination of the plant capacity may be rendered inadequate due
+to reasons such as follows: -
+(i) Failure to indicate adequate weightage to different products.
+(ii) Failure to include the total output.
+(iii) Failure to consider differences in ages of different equipment, etc. Critically
+analyse the criterion for the determination of the plant capacity discussed in the
+assignment (7.3).
+7.5 Is the actual production equal to the plant capacity? What has been the Production over
+last six months? (Give the monthly highest, lowest and also draw the daily production
+curve).
+7.6 Absenteeism, breakdown of equipment, power shutdown, non-availability of raw2
+materials, non-availability of semi-finished material from the previous operation, non-
+availability of orders, non-availability of tools, jigs, fixtures, etc., shut-down of
+compressor, crane, etc., awaiting instruction and so on are some of the reason which lead
+to idling of equipment or staff. Evolve a methodology for studying the plant capacity.
+Further, study the factors behind the over-utilisation or the under-utilisation of the plant
+capacity for the unit under-reference.
+7.7 In continuation of the assignment (7.6) if the capacity has been under utilized then obtain
+the percentages of idleness for the last six months against each factor. Are there any
+norms for the acceptable percentages of idleness?
+7.8 In continuation of the assignment (7.6) if capacity has been over utilized then obtain the
+percentages of over-utilisation for the last six months against each factor.
+7.9 In continuation (7.7), study actions taken in case of an abnormal percentage of idleness
+against any of the factors listed. Were the actions taken of a short term nature or long
+term nature? which of the factor (s) responsible for the idleness has persisted for a long
+time ? Discuss how the reasons for idleness on account of this factor (s) weigh with
+respect to the reasons due to the environmental factors like market changes or shifts in
+the Govt. policy etc.
+7.10 With explanations list all such equipments which have been included in the capacity
+circulations but have not been used at all either due to defects or obsolescence or any
+other reason.
+7.11 What equipment is perpetually under-utilised and why/Try to explore if the equipments
+capacity is far beyond the capacity of the system. If so, study why such an equipment was
+procured in times of investigations like (i) possibility of future expansion. (ii) Lower
+capacity equipment not profitable, etc. ? Can something be done to improve utilisation of
+such equipment?
+7.12 What equipment is frequently breaking down? Is it because of inherent defects in the
+equipment or poor maintenance or poor operation or excessive usage allowing very little
+time for maintenance?7.13 Draw the operation vs. idleness graphs for some critical machines and equipment. At
+what equipment / station / load centre end the jobs are frequently queuing up? Why can
+you think of a method to reduce the queue lengths?
+7.14 If the shop is under the incentive scheme, write a short note on the salient features of the
+scheme.
+7.15 Describe the time standards fixed for each job. Are these considered tight or loose?
+(Critical study of the work’s schedule would be of great help in working of these details.)
+7.16 How many shifts are worked for the entire industrial unit, for some of the subsystems?
+7.17 Is there any difference in the quality of the work produced in different shifts?
+7.18 Does the payment to workers differ shift-wise?
+7.19 In terms of difficulties like transportation, facility, food timings, etc are there any
+problems for workers to arrive at or leave from the factory?
+7.20 Is there a possibility for working more shifts that as of present?
+7.21 Does the demand for the products justify working additional shifts? If so, what are the
+obstacles in the way of working additional shifts?
+7.22 Study the methods of preparing the production budgets.
+monthly or weekly?
+Are they prepared yearly,
+7.23 If the production budgets are lower than the capacity, what have been the reason(s) for
+fixing it so?
+7.24 For a given year, if the production budget has been fixed higher than the capacity, discuss
+the steps that can be taken to get that extra-production. (Some of these steps could be:
+Subcontracting overtime, extra-capacity generation by buying extra equipment, running
+extra shifts, etc.)
+7.25 What use is made of capacity utilization figures by the top management as also by the
+shop floor management?
+7.26 Are these capacity utilization statements computerized? What is the time lag between the
+reporting time and availability of these statements? Is there an excessive delay? If so,
+why? Does this affect the validity of using of these statements?
+7.27 Is the responsibility for the proper utilization of plant capacity fixed on any individual?
+7.28 What is the rated capacity of the plant and for what product mix? What was the original
+product mix that planners envisaged and what was the capacity for the same? In terms of
+only the highest monthly figures, describe the maximum achievement of the plant, if
+possible, since its inception.8.
+INVENTORY
+8.1 What arrangements exist in the plant for sorting of various materials, goods, components,
+etc? Are there sub-stores in addition to the Central Store in the various departments?
+8.2 Study how these stores are arranged and maintained. Further, describe procedures
+adopted in the stores for the receipt of materials, goods, components, etc. and the
+documentation of the same.
+8.3 Describe the codification and cataloging methods adopted in the stores for different
+material, goods, components, etc. Do the stores have any items on a self-replenishment
+system? What is the system by which the inventory of these items is controlled?
+8.4 Study the application of the ABC analysis to the Stores Department. What can be the
+system for a periodic review of A items? Describe the communication system for
+bringing to the attention of the concerned indenters that there is an excess of any
+particular item. Also, discuss the procedure for the periodic review of inventories.
+8.5 What is the system for indenting spares required by the Maintenance Department? What
+can be the procedure for keeping check on consumption and indenting of spares?
+Describe the precautions taken to ensure that the individual departments do not indent
+haphazardly.
+8.6 Discuss the methods adopted to check and to control the process inventories.
+Study the norms for deciding the holding of these inventories, which department controls
+and regulates these inventories?
+8.7 Give the list of documents / vouchers used during the process of receiving, inspecting and
+storing the material, goods, components (spare parts etc.) How are the materials, goods,
+etc. issued? Who prepare the material requisition for the production goods, maintenance,
+and sundry materials and for other miscellaneous requirements? How is the requisition
+compiled with? How are the material and financial ledgers updated? How is the
+materials moved to different shops? Are there delays in the issue of materials? If so,
+what are they?
+8.8 What is the procedure for returning by the shops the rejected purchased materials after
+the issue by stores? Can these materials be returned to the vendors? Critically read a few
+purchase orders and the legal provisions contained in them.
+9.
+QUALITY CONTROL
+9.1
+Describe the routine set-up inside the plant for the quality control and inspection of the
+manufactured items.
+9.2 Study what kind of reports are submitted by the Research & Development (R&D)
+laboratory to the operational managers and also describe the type of review undertaken
+by the later of these reports.
+9.3 What to you understand by Statistical Quality control? Study its application in the
+industrial unit under reference.9.4 For a foundry, study:
+(i) How, before taping the metal, the chemical composition of the sample from the
+melting furnace is determined.
+(ii) How much time the analysis in (1) takes.
+(iii) What alternate and better instruments are available for doing the job in (1).
+(iv) How the time taken for the analysis affects the capacity of the furnace, and
+(v) How the results of the analysis are used by the foundry to change the chemical
+composition.
+9.5 If the industrial unit under reference has a foundry then study if there is any method for
+determining the composition of scrap and segregating various types of scrap into different
+categories.
+9.6 If the industrial unit has forge shop, a foundry and fabrication shop then, study the
+following :
+(i) How many and how samples are taken for tensile test? How are these samples
+machined and what physical dimensions are ensured for the samples?
+(ii) What testing machine is used? How are the samples tested?
+(iii) How many samples are taken for testing hardness? Describe the total process for this
+test.
+9.7 ( i ) Clearly note the existence of the following gauges for checking dimensional
+accuracy and their least count;
+(a) Air gauges,
+(b) Dial gauges,
+(c) Dial indicators on micrometers,
+(d) ‘Go’ and ‘No go’ gauges,
+(e) Standard Instruments
+(ii) How many cases are observed in the inspection records where, on re-inspection, a
+different dimension was recorded? Note the name of the instrument in each of these
+cases.
+(iii) Study the gauge available with the workers. Compare its accuracy with that of the
+inspection gauge. As a result, what percentage of jobs, passed by workers’ gauges, get
+rejected by inspection gauge?
+(iv) Study the frequency of errors in the setting of standard instruments and gauges.
+Who sets the gauges and how is the setting done?
+9.8 How is the surface finish specified? Is there any instrument to check the surface finish?
+How does the instrument work?
+9.9 How are other physical attributes like alignments, sequences, parallelism, true cylindrical
+surface, true flat surface, etc. checked?
+9.10 Make a list of specific facilities provided in the Tool Room for manufacture of master
+gauges, inspection gauges and operating gauges, Also note all the instruments and
+machines provided for the inspection of all these gauges. Further, describe the climatic
+conditions ensured for the above equipment.9.11 Draw an organizational chart of the quality control department and indicate the level at
+which the quality control and manufacturing departments have a common head. How are
+problems of quality settled at intermediate levels?
+9.12 Seek opportunities to study and describe the quality assurance techniques in terms of the
+following:
+(i) Chemical analysis, e.g., sand, cement. Steel, etc.
+(ii) Physical analysis, e.g., size of grading of aggregates, strength tests on concrete
+cubes, etc.
+(iii) Dimensional checks, e.g. tolerances, fits, clearances and size, shape, etc.,
+(iv) Condition checks, e.g. appearance, checks on completeness, stage checks such as
+well preparation of reinforcement positioning.
+(v) Radiographic tests, e.g. welds.
+(vi) Performance tests e.g., pressure tests on vessels or popes, running tests on motors,
+etc.
+(vii) Special tests for special purposes, e.g., loading tests on driven pipes, noise tests, etc.
+10.
+ORGANIZATIONAL STRUCTURE
+10.1 Draw an organization chart for the whole organization. Indicate the following clearly;
+(i) The levels of authority.
+(ii) The span of control at each level,
+(iii) The type of arrangement at each level in terms of line, line and staff and functional
+details, and
+(iv) Line and staff functions.
+10.2 In the course of your study, superimpose on the formal organizational chart, the informal
+organizational structure existing, indication if possible the relation behind deviations
+between the formal structures.
+10.3 For each sub-system, draw a detailed organizational chart indicating the arrangement of
+personnel for line, line and staff and functional peaks at all levels, namely managers,
+foremen supervisor and workers. Also, indicate the given subsystem’s relationship with
+other subsystems. Pointing out the formal communication channels between the
+subsystems, e.g. a machine shop in relation with maintenance. Tool room personnel
+department, inspection, drawing office, production control, planning, other
+manufacturing shops, etc.
+10.4 (I) Trace the history of the organizational structure for last six to seven years and indicate
+the major changes that have been brought about particularly in relation to:
+(a) Number of levels of authority,
+(b) Spans of control
+(c) Ratio of staff to line officers.
+(d) Line control changes in relation to responsibility for products or functions.
+(e) Changes in financial and other powers for specific levels, etc.
+(II) Study the overall effect of the changes mentioned in ( I )10.5 Identify formally constituted groups (These groups can consist of committees appointed
+by the management at all levels. These committees may be standing committees or may
+be ad-hoc ones and would also include shop committees). For each of the above groups,
+study the following details:
+When (year, month) was the group formed?
+Who ordered the group?
+Were the members to start with or later included in the ex officio capacity or by name?
+Does the justification of the group exist today?
+What are the functions of the groups?
+Are there any functions being discharges by more than one group? If so, does it lead to
+any conflicts?
+10.6 Study the structure for workers’ councils at all levels.
+10.7 Study the attitude of workers to changes in technology, products staff, etc.
+10.8 Taking one of the staff department, say finance, indicate how it influences the working of
+the line departments in their work. For instance, does the costing section hold regular
+meeting with departmental managers to discuss variations between budget and
+performance?
+11. MANAGEMENT INFORMATION SYSTEMS
+11.1 (i) What are the documents/cards/memos required to be sent whenever a manufacturing
+order is sent to the manufacturing shops?
+(ii) What is the purpose of each document/card/memo?
+(iii) Who prepared each of these records?
+(iv) How do they reach the manufacturing shops (indicate the details of persons
+carrying, handling over formalities, etc.)
+(v) What is the final disposal of each record?
+(vi) Which are the departments/officers who give remarks and sign on these
+documents/cards/memos?
+(vii) What lists are kept and where in order to indicate the following:
+(a) Number of manufacturing orders pending in the shop.
+(b) Number of manufacturing orders pending release (also given reasons)
+(c) Number of manufacturing orders completed during a period
+(d) Number of manufacturing orders suspended for some reasons.
+(e) Number of manufacturing orders released on account of replacement of rejected
+parts
+(f) Number of manufacturing orders not connected with regular production line, etc.
+11.2 Study if there are cases where the same information is being collected by various
+departments and further, if this is leading to differences in figures provided by different
+departments, e.g. differences in data of production as reported by the departments and the
+finance department or in values of rejection, etc, as reported by the R&D Lab and the
+individual departments.
+11.3 Study how, at the departmental level, it is ensured that from the heap of data received the
+relevant one is screened out.11.4 Study at various levels the communication network apart from the dark systems.
+11.5 Study the organization of co-ordination meetings at the various levels, where the
+problems are discussed every day every week, once a months, etc. How are the decisions
+taken in such meetings communicated to all those who are to take action?
+12. BUSINESS COMMUNICATION
+12.1 Study and describe the form and structure of letters and memos in terms of the following:
+(i) Requesting free materials,
+(ii) Requesting information,
+(iii) Requesting appointment,
+(iv) Requesting approval,
+(v) Placing an order by letter,
+(vi) Transmitting important papers,
+(vii) Confirming oral agreements,
+(viii) Follow up letters and memos,
+(ix) Writing promotion and sales letters,
+(x) Turning down requests for services,
+(xi) Responding to customer’s complaints,
+(xii) Responding to requests for adjustments.
+(xiii) Saying ‘N0’ to poor credit risks,
+(xiv) Collecting over-due accounts,
+(xv) Responding in the Executive’s absence, etc.
+13.
+RESEARCH & DEVELOPMENT (R&D)
+13.1 (i) Does the industrial unit under study has any foreign collaboration? If yes, know the
+name of the foreign collaborating firm.
+(ii) What is the proportion of foreign capital?
+(iii) Study the exact nature of technology transfer in this case. The following factors may
+be able to throw sufficient light.
+Magnitude of technology transfer in terms of foreign exchange.
+The state (characteristics ) of international market w.r.t. technology under study
+Package deal transfer.
+Turnkey basis project.
+Only patent has been bought
+(iv) Has there been any exchange of manpower with the foreign collaboration firms?
+Know the details.
+13.2 Does the industrial unit under study has its own R&D unit? If yes, know the following
+details:
+( i ) What percentage of sales turnover is invested in R&D per year?
+( ii ) R&D expenditure figures for last few years.
+( iii ) R&D manpower figures for the last few years
+( iv ) percentage composition of the project undertaken at any time as per the following
+classification :
+(a)
+Projects leading to new products
+(b)
+Projects leading to improved product.
+(c)
+Projects aimed at improving the process.
+(d)
+projects aimed at substituting new materials by indigenous cheaper ones.13.3Study the mechanism of project evaluation and selection used by the R&D unit.
+13.4Know the various quantitative techniques used in the evaluation and selection of
+projects; e.g. scoring models, economic models, optimization models, risk analysis
+models, etc.
+13.5Know if R&D efforts of the industrial unit under study has effected import substitution
+or export promotion.
+13.6Study the product life-cycle for different products of the industry under study
+13.7Under what Programs the industrial unit under study undertakes to train and develop its
+manpower?
+13.8Does the industrial unit have any linkage with the universities and/or national research
+laboratories? Give details.
+13.9
+Has the industrial unit under reference made any special product for the first time in the
+country and thereby saved import of the concerned material? What is this product?
+Study the history of its production. Does this material/product appear on the regular
+production plan of the unit now?
+13.10 Study if there is a well-laid out policy for import substitution of spare parts required by
+the plant. Study how far this has resulted in inventory reductions.
+13.11 What percentage of the plant capacities is utilized for the developmental work?
+14. MATERIALS OF CONSTRUCTION
+14.1
+Mild steel, stainless steel, copper, aluminum, nickel, lead, titanium, paint, wood, glass,
+ceramics (stoneware, porcelain), concrete, rubber and plastics, earth, etc. constitute list
+of more important materials of construction in today’s context. In terms of the
+industrial unit under reference, describe such materials of construction giving details
+such as the following:
+(i) Use,
+(ii) What corrodes the material,
+(iii) To what the material is resistant,
+(iv) Cost
+.
+15. INSTRUMENTATION & CONTROL
+15.1
+List various measuring instruments and control devices observed in the plant, while
+mentioning the variables they measure or control as well as describing the principle of
+operation for each of them.16. WASTE MANAGEMENT
+16.1 For the industrial unit under reference, are there any wastes? Give details.
+16.2What type of environmental pollution problems are created by a thermal power plant
+utilizing the pulverized coal as its source of energy?
+16.3Describe the role that ( i ) Stacks, (ii), circulation water from condenser (iii) Ash slurry
+disposal, and (iv) Effluents from the water treatment plant play in discharging of the
+contaminates that cause pollution from a thermal power plant.
+16.4What are the various corrective methods possible for reduction of pollution from the
+thermal power station?
+17. ENGINEERING DESIGN & DEVELOPMENT CONSULTANCY
+17.1What do you understand by the term project Engineering?
+17.2Go back to the days when the industrial unit under reference was first initiated by its
+management as a project. Give names of the engineering design and development
+consultancy organizations whose services the management had engaged during the
+project implementation period and further state what type of services each of these
+consultancy organizations had rendered.
+18
+DESIGN DECISIONS
+(a)
+Plant Size
+18.1 The industrial unit under study has the given production capacity perhaps, right at time of
+inception of this industrial project designer had a choice to make between one plant with
+the entire production capacity as is the case now or several plants with several smaller
+capacities or vice-versa. For the specific situation before you, in terms of the principles of
+the techno-economic feasibility studies, critically unfold your understanding of the logic
+behind the choice between these two alternatives.
+18.2 Discuss with possible illustrations the role that various factors like:
+( i ) Heavy/low investment,
+( ii ) High/low return,
+( iii ) Long delivery schedules from machinery suppliers, and
+( iv ) Long gestation period coupled with teething troubles after commissioning to play in
+defining the economic size of a production unit.
+(b)
+Site Location
+18.3 critically discuss the role that the parameters such as:
+( i ) Population density in an area where the plant is to be located,
+( ii ) Availability of land.
+( iii ) Any possibility of large scale dewatering during the plant construction
+( iv ) Access to the site,
+( v ) Availability of coal,
+(vi) Availability of water, and
+(vii) Soil characteristics can play in the choice of location for & thermal power station.18.4 Critically study the rationale behind the choice of site for the industrial unit under
+reference.
+(c) Transportation Route
+From amongst different alternatives possible, critically discuss the choice of the present
+transport route(s) between the raw-material availability locations and the plant site.
+(d)
+Site Layout
+18.6 Read/Sketch and critically analyze the site layout drawing in terms of:
+(i) Foundation requirements
+(ii) Site and plant levels.
+(iv) Circulating Water System requirements.
+(v) Coal & Fuel Oil handling system requirements.
+(vi) Ash and Duct disposal problems
+(vii) Road and Rail access.
+(viii) Requirements of ancillary buildings such as office, laboratory, workshops, stores,
+and
+(ix) Construction requirements
+(e)
+Basic Plant Design
+18.7 For the industrial production unit under reference critically study the basic plant Design or
+the plan outline design in terms of following details: -
+(i) Efficient Operation.
+(ii) Reliability of Operation.
+(iii) Simplicity of Operation.
+(iv) Safety in Operation.
+(v) Working conditions.
+(vi) Ease of Maintenance.
+(vii) Minimum Expenditure.
+(viii) Low capital cost, and
+(ix) Minimum Operating Cost.
+(f)
+Plant Site
+18.8 Critically discuss various factors that went behind the choice of the present plant site.
+18.9 For the industrial production unit under reference, what were the various plant site
+alternatives that were considered during the project implementation state?
+18.10 With reference to questions (18.8) and (18.9) how did the following variables affect the
+ultimate choice of the plant site.
+(i) Market Availability,
+(ii) Raw material location,
+(iv) Availability of space for possible future expansions,(v) Availability of labor,
+(vi) Availability of sufficient services such as water, gas, electricity, etc.
+(vii) Type of transport needs,
+(viii) Satisfactory access,
+(ix) Satisfactory ground conditions, and
+(x) Environmental problems, if any,
+(g)
+Plot plan
+18.11
+Read and draw a sketch of the ‘as is’ plot plan drawing for the industrial unit
+under reference.
+(h)
+Plant Layout
+18.12 Read as many drawings as possible and sketch some sample cases as illustrations from
+the plant layout drawings giving certain details as the ones listed below: -
+(i)
+Main connections between various items of the plant such as circulating water
+mains, main steam and feed piping, coal conveyers, electrical connections,
+(ii) Major plant equipment arrangements,
+(iii) Floor-wise arrangements of equipment in the building where major equipment
+have been housed,
+(iv) High pressure pipe work,
+(v) Plant control arrangements,
+(vi) Operating staff offices and amenities, etc.,
+(i) Township Foundation & Superstructure
+18.13 Study the foundations for the different buildings and plants of the industrial unit.
+18.14 Study the nature of the building superstructures.
+18.15 If the industrial unit under reference has its own township, sketch the same from the
+point of view of an Architectural Engineer.
+19. DESIGN CALCULATIONS
+19.1 Whenever meaningful, carry out mass balance calculations for the production unit.
+19.2 Whenever meaningful, carry out balance calculations for the production unit.
+19.3 For the industrial unit under reference, list all the major equipment and through sample
+design calculations obtain size and capacity of each of the major equipment for the given
+production capacity of the plant.
+19.4 Calculate the total water requirement for the plant as wall as the township. For the supply
+of this water quantity, describe the water supply system. In the process list names, sizes
+and capacities of the various major equipments of the water supply system.
+19.5 For the given production capacity, estimate the electrical power demand for the plant.
+How would this demand be modified if, say, the product capacity is doubled?19.6 In case the industrial, nit under reference involves piping installations, state various
+considerations one must adhere to in the design and layout of any piping installations.
+19.7 Given that the industrial unit has its own receiving substation, based on the power
+requirements obtain size and capacity calculations for each of the major electrical
+equipment for the sub-station.
+20. UTILITIES
+20.1 For the industrial unit under reference, list all the utilities and services needed.
+20.2 If the industrial unit under reference happens to be an electrical power plant, then describe
+the generation of electricity with the help of a flow diagram consisting of the energy refer
+to a book on the power plant practice that might be available in the industrial production
+unit.
+20.3 In continuation of the details of the task number (20.2) study the steam and water circuits
+for a boiler unit.
+20.4 If the industrial unit has fuel and ash handling plants then describe the constituents of the
+same.
+20.5 In continuation of the details of the task number (20.2) discuss feed water heating system
+as well as cooling water and condenser plant for the turbine section of the power plant.
+Such kind of discussion should invariably incorporate schematic diagrams.
+20.6 List various auxiliary services required for a modern power plant.
+21. DRAWINGS & MAP READING
+21. Undertaking map-reading assignments in terms of the following :
+(i) Geological map.
+(ii) Road and Railways map.
+(iii) General location map.
+(iv) Plant layout and
+(v) Master plan for township.
+21.2 Study various legends that are used in different drawings towards indicating details such
+as state boundary, district boundary, broad-gage, meter-gage, approach road (metallic),
+national highway, all weather road, fair weather road, river, discharge canal, coal field,
+etc.
+21.3 Study different legends for various types of valves and pumps.
+22.
+PROJECT ENGINEERING
+22.1 What was the year in which the industrial production unit under
+consideration was commissioned?22.2 Between the identification of the product need and the stage when the plant goes into
+production there are several stages such as:
+(i) Feasibility study,
+(ii) Preliminary scheme,
+(iii) Preparation of the project data,
+(iv) Overall financial assessment,
+(v) Approval
+(vi) Scheme execution,
+(vii) Design,
+(viii) Procurement,
+(ix) Construction, and
+(x) Commissioning,
+Needless to say all these stages go to form what is termed as the Project implementation
+Period. These stages are normally described in the Project Report which is generally
+prepared in the context of the feasibility study. Preparation of such a project report is a
+routine necessity and is for the industrial unit under reference. Also, such report should
+normally be available in the library of the unit. This report certainly contains a vast
+amount of data in terms of many of the questions that have been posed so far and many of
+those that are to follow. Critically study such project reports for industrial unit under
+consideration.
+22.3 Study the project schedule network describing activities till the commissioning stage for
+the industrial production unit under reference. This network should normally be available
+in the concerned project report. It may be noted that the project schedule network
+preparation involves application of PERT & CPM techniques.
+22.4 For the industrial unit under reference with the given yearly production capacity obtain
+following calculations:
+(i) Total area of the land and premises.
+(ii) Total roofed over area for works,
+(iii) Total roofed over area for the storage of the finished product.
+(iv) Total roofed over area of office and other buildings.
+(v) Supervision and erection cost in Rupees during the project implementation stage.
+(vi) Names of the design and consultancy organization(s) which assisted in the
+completion of the project during the project implementation stage,
+(vii) Breakdown of the major equipment costs, for the maintenance workshop and
+laboratory,
+(viii) Breakdown of the major electrical equipment cost,
+(ix) Raw material consumption figures per unit of production,
+(x) Units of volume of water consumed per unit of production,
+(xi) Fuel oil consumption per unit of production,
+(xii) Electricity consumption per unit of production,
+(xiii) Number of staff of following categories:
+Executive: Managerial, Technical, Administrative Staff
+Production: Foreman, Skilled workers, Unskilled workersMaintenance: Skilled workers, Unskilled workers, Laboratory Staff,
+Sales Department, etc.
+(xiv) For the plant requirements at various levels, what are the estimates of time for the
+on job training of the local employees?
+23.
+INFRASTRUCTURAL FACILITIES
+23.1 Below are listed some of the facilities and concessions to provide infrastructural facilities
+to an industrial unit.
+(i) Improvement of road to facilitate traffic movements,
+(ii) Approach road to the plant site,
+(iii) Establishment of hospital schools, PT office and public telephone systems,
+(iv) Establishment of marketing centers and banking facilities,
+(v) Public Transport,
+(vi) Facilities for small scale industrial units to manufacture household equipment,
+furniture and fittings,
+(vii) Supply of water to the industrial projects as well as the nearby villages and thereby
+allowing use of water at subsidized rates,
+(ix) Extension of concession by establishment of HT substation for the plant site and
+distribution of power to the Plant Township, etc.
+For the industrial unit under study, list and briefly discuss the nature of infrastructural
+facilities such as the ones listed above.
+24. PLANT ECONOMY
+24.1 For certain industrial products of great importance, Project Authorities have been
+established, with a view to encourage production. With the help of these authorities
+certain subsides can be obtained to reduce the cost of industrial project. These subsides
+can be as follows:
+(i)Central Capital subsidy,
+(ii) Subsidy on the transport cost towards delivery of plant and machinery,
+(iii) Subsidy on mining and housing schemes,
+(iv) Subsidized rate of acquisition of land and free use of trees for construction work.
+(v) Use of local construction material free from royalty, etc.
+List various industrial products and the type of subsides of the above type which are
+received towards their production. Give detailed description of the subsidies in case of
+the industrial unit under reference.
+24.2 For a given mining project, undertake to do cost-comparison between following three
+transport systems between the crusher house to the main plant.
+(i) Ropeway,
+(ii) Belt conveyor, and
+(iii) Dumper Truck,24.3 From the study of the project report, describe various items that go to define the project
+cost till the stage of commissioning.
+24.4 For a production unit, following are some of the items that go to define the production
+cost.
+(i)
+(ii)
+(iii)
+(iv)
+(v)
+(vi)
+(vii)
+Raw Materials
+Consumables,
+Utilities
+Labor and plant overhead,
+Repairs and maintenance,
+Light,
+Administrative and sales expenses, etc.
+For the industrial unit under reference, obtain the total production cost incorporating
+above and other similar items.
+24.5
+Financial analysis constitutes an important step in the implementation of any industrial
+project and is done before the receipt of necessary approvals. It normally consists of
+following details:
+Project cost,
+Mode of finance,
+Cost of production,
+Profitability analysis,
+Cash low statement,
+Breakeven analysis
+Balance-Sheet, and
+Sensitivity analysis,
+Try to understand and hence describe what these topics mean through the study of the
+project report of the industrial unit under reference.
+24.6 Taking the case of the industrial unit under reference as an illustration comprehensively
+discuss the role that following and similar other items go to play towards the formulation
+of any industrial projects cost:
+(i) Land and land rights,
+(ii) Roads and railway sidings,
+(iii) Ancillary buildings,
+(iv) Civil and architectural works,
+(v) Equipment cost, installed and spare parts cost,
+(vi) Consulting requirements,
+(vii) Consulting engineering charges,
+(viii) Colony and housing,
+(ix) General and establishment charges,
+(x) Vehicles,
+(xi) Contingency, etc.24.7 The total product cost is made of manufacturing costs and general expenses.
+The manufacturing costs can be further classified into:
+(i) Direct production cost,
+(ii) Fixed charge and,
+(iii) Plant overhead costs,
+The general expenses normally consist of the following:
+(iv) Administrative expenses,
+(v) Distribution and marketing expenses,
+(vi) Research and development,
+(vii) Financing interest (this is sometimes also considered a fixed charge) and
+Gross earning expenses,
+Each of the above mentioned sub-costs can be further sub-divide.
+For example, while the direct production costs can be considered to be made of :
+(i)
+(ii)
+(iii)
+(iv)
+(v)
+(vi)
+(vii)
+(viii)
+(ix)
+Raw material,
+Operating labor,
+Operating supervision,
+Power and utilities (consisting steam, electricity, fuel, refrigeration, water, etc.)
+Maintenance and repairs,
+Operating supplies,
+Laboratory charges,
+Royalties,
+Catalysts and solvents, etc.
+The fixed charges can be sub-divided into:
+(i)
+(ii)
+(iii)
+(iv)
+Depreciation,
+Taxes (property),
+Insurance and
+Rent,
+Similarity the plant overhead costs are made of:
+(i) Medical expenses,
+(ii) Safety and protection,
+(iii) General plant overhead,
+(iv) Payroll overhead,
+(v) Packaging,
+(vi) Restaurant,
+(vii) Recreation,
+(viii) Salvage,
+(ix) Control laboratories,
+(x) Plant superintendence,
+(xi) Storage facilities, etc.Finally, if the administrative expenses can be further sub-divided into details like :
+(i)
+(ii)
+(iii)
+(iv)
+(v)
+Executive salaries,
+Clerical charges,
+Engineering and legal costs,
+Office maintenance,
+Communications, etc.
+The distribution and marketing expenses are normally made of :
+(i)
+(ii)
+(iii)
+(iv)
+(v)
+Sales office,
+Salesmen expenses,
+Transportation of product,
+Advertising,
+Technical sales service, etc.
+For the products pursued by the industrial unit under reference, study the breakup of the
+total product cost.
+24.8 Study and describe the formats of the following accounting procedures :
+(i)
+(ii)
+(iii)
+(iv)
+(v)
+(vi)
+Consolidated balance-sheet,
+Consolidated income statement,
+Ledger keeping,
+Manufacturing cost works inventory,
+Cost-of sales account, and
+Accumulation account for the materials,
+25. INFORMATION PROCESSING CENTER:
+This assignment would expect you to know the details pertaining to different generations
+of computers, details of some commonly available 8 bit, 32 bit & 64 bit microprocessors.
+Also it assumes that you know popular Operating Systems: now summarize the
+information of the Professional Processing Centre Industrial Unit where you are attending
+your IP-I course in terms of the following:
+(i) Name, model, manufacturer of the Computers available,
+(ii) Single user systems or multi-user systems with details,
+(iii) Nature and amount of each computer system available.
+(iv) Configuration of each computer system available.
+(v) Specifications of printers being used.
+(vi) Operating System name with respect to each computer.
+(vii) Languages supported by each Operating System & those available,
+(viii) Name of the line/text editors in each of the systems available.EVALUATION COMPONENTS
+Instruments
+1.
+2.
+3.
+4.
+5.
+6.
+Quiz
+Seminar/Viva
+Group Discussion
+Project Report
+Observation
+Diary
+Weightage
+10%
+25%
+15%
+30%
+15%
+5%
+POINTS JUDGED THROUGH EACH EVALUATION INSTRUMENT
+Important points of evaluation to be judged in each of the instruments are given below :
+Quiz (Total weightage – 10%)
+1.
+2.
+3.
+4.
+5.
+Knowledge of basic concepts and physical principles.
+Additional knowledge acquired.
+Ability to apply the knowledge of basic concepts and physical principles.
+Ability to analyze a given problem or situation.
+Ability to follow logical path in problem-solving efforts.
+Seminar / Viva (Total weightage 25%)
+1.
+2.
+3.
+4.
+5.
+6.
+Knowledge of basic concepts and physical principles.
+Additional knowledge acquired.
+Ability to apply the knowledge of basic concepts and physical
+principles.
+Logical development of the subject.
+Effective oral communication.
+Self-reliance, cooperation and moderation.
+Group Discussion (Total weightage 15%)
+1.
+2.
+3.
+4.
+5.
+6.
+7.
+Knowledge and comprehension of the problem/topic introduced for group
+discussions.
+Level of participation.
+Ability to lead discussion in correct direction and cooperate with fellow members.
+Ability to initiate the topic when discussions subside.
+Ability to suggest new ideas for extending and improving group discussion.
+Ability to moderate discussions.
+Ability to create good impression on observers and members.Project Report (Total weightage – 30%)
+1.
+2.
+3.
+4.
+5.
+6.
+Knowledge and comprehension of the problem.
+Introducing the problem/subject and setting the objectives of the project.
+Ability to analyze the problem.
+Logical sequencing, organization and data handling in the problem.
+Concluding remarks in terms of the objectives set earlier and the future
+scope of the problem.
+Presentation of the abstract with precision.
+Observation (Total weightage 15%)
+1.
+2.
+3.
+4.
+5.
+Regularity and ability to meet deadlines.
+Sense of responsibility.
+Initiative, leadership and cooperation.
+Industry.
+Social sense and adaptability to practical situations.
+Diary (Total Weightage – 5%)
+1. Data procurement, calculations and presentations.
+2. Thought process.
+3. RegularityIP-I CALENDAR
+1st day
+1st day to 5th day
+5th day
+8th to 10th day
+15th to 17th day
+25th day
+25th to 27th day
+28th day
+34th to 35th day
+42nd to 44th day
+50th day
+53rd day to 56th day
+On or before 65th days
+internship program-I students report to Internship Program -II faculty
+at the Stations; internship program-I starts
+Distribution of internship program-I course handouts to the students.
+Dispatch of Primary Information Report and two copies of Handout to
+the University by the faculty.
+Quiz I and display of marks and feedback to the students on Quiz 1.
+Group discussion I and display of marks and feedback to the students
+on Group discussion I.
+Submission of Project Report I by the students.
+Seminar, I, Evaluation of Project Report I, Display of Marks,
+Feedback to the Students on Seminar I and Project Report I.
+Display of Mid-Term Grades to the students; Guidance and counseling
+to the students. Dispatch of Mid-Term grading to the University.
+Quiz II and Display of marks and feedback on Quiz-II to the students.
+Group Discussion II and Display of marks and feedback on Group
+Discussion II to the students.
+1. Submission of Project Report II by the students.
+2. Distribution of Feedback questionnaire with answer sheets to the
+students.
+1. Seminar II
+2. Evaluation of Project Report II
+3. Evaluation of Observation and Diary component.
+4. Display of total marks obtained by students.
+5. Final grading.
+6. Collection of feedback questionnaires.
+7. Checking that students have no dues.
+Submission of Final Grading , internship program-I Register, Project
+Reports, Feedback Questionnaires from students to the University.
+Note : The starting and closing dates as announced by the Division, are to be
+followed strictly. These dates should not be changed without prior permission of the
+University and they are statuary requirements of the University.

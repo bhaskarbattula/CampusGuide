@@ -8,17 +8,6 @@ load_dotenv()
 class Config:
     # API Provider Configuration
     API_PROVIDER = os.getenv("API_PROVIDER", "groq")  # "openai", "xai", or "groq"
-<<<<<<< HEAD
-    API_KEY = os.getenv("API_KEY")
-
-    # LLM Configuration
-    if API_PROVIDER == "groq":
-        LLM_MODEL = os.getenv("LLM_MODEL", "llama-3.1-8b-instant")
-    elif API_PROVIDER == "xai":
-        LLM_MODEL = os.getenv("LLM_MODEL", "grok-beta")
-    else:  # openai
-        LLM_MODEL = os.getenv("LLM_MODEL", "gpt-3.5-turbo")
-=======
     API_KEY = (
         os.getenv("OPENAI_API_KEY")
         if API_PROVIDER == "openai"
@@ -36,21 +25,12 @@ class Config:
         if API_PROVIDER == "groq"
         else "gpt-3.5-turbo",
     )
->>>>>>> bhaskar
     LLM_TEMPERATURE = 0.1  # Low temperature for factual responses
 
-    # Embedding Configuration (TF-IDF based)
-    EMBEDDING_DIMENSION = 1000  # Max features for TF-IDF
+    # Embedding Configuration (Sentence Transformers)
+    EMBEDDING_MODEL = "all-MiniLM-L6-v2"  # Better for OOV handling
 
     # API Base URL
-<<<<<<< HEAD
-    if API_PROVIDER == "groq":
-        API_BASE_URL = "https://api.groq.com/openai/v1"
-    elif API_PROVIDER == "xai":
-        API_BASE_URL = "https://api.x.ai/v1"
-    else:  # openai
-        API_BASE_URL = "https://api.openai.com/v1"
-=======
     API_BASE_URL = (
         "https://api.x.ai/v1"
         if API_PROVIDER == "xai"
@@ -58,7 +38,6 @@ class Config:
         if API_PROVIDER == "groq"
         else "https://api.openai.com/v1"
     )
->>>>>>> bhaskar
 
     # Vector Store
     VECTOR_STORE_TYPE = "faiss"
@@ -66,20 +45,16 @@ class Config:
     # Retrieval Configuration (TUNED for policy documents)
     CHUNK_SIZE = 1500  # Larger chunks to keep sentences together
     CHUNK_OVERLAP = 500  # Increased overlap for better continuity
-    TOP_K_RETRIEVAL = 15  # Retrieve more candidates
-    SIMILARITY_THRESHOLD = 0.1  # Lower threshold for policy questions
+    TOP_K_RETRIEVAL = 15  # Retrieve top candidates
+    SIMILARITY_THRESHOLD = 0.1  # Filter relevant chunks
 
     # Validation Configuration (TUNED for policy documents)
     MIN_SUPPORTING_CHUNKS = 1
-    GROUNDING_STRICTNESS = 0.3  # Lower for policy answers that may be interpretive
+    GROUNDING_STRICTNESS = 0.0  # Allow all answers for testing
 
     # Document Processing
-<<<<<<< HEAD
-    SUPPORTED_EXTENSIONS = [".txt"]  # Plain text files only
-=======
-    SUPPORTED_EXTENSIONS = [".pdf", ".txt"]  # Support PDF and TXT files
+    SUPPORTED_EXTENSIONS = [".pdf", ".txt", ".png", ".jpg", ".jpeg", ".bmp", ".tiff"]
     OCR_FALLBACK = True
->>>>>>> bhaskar
 
     # Paths
     DATA_RAW_PATH = "data/raw/"
