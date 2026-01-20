@@ -14,12 +14,20 @@ torch.set_default_device("cpu")
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 os.environ["CUDA_VISIBLE_DEVICES"] = ""  # Force CPU
 
-
 class Embedder:
     def __init__(self):
         self.config = Config()
+
+        # Force the model to use CPU even if the config specifies otherwise
         self.device = torch.device("cpu")
-        self.model = SentenceTransformer(self.config.EMBEDDING_MODEL, device="cpu")
+
+        # Try to load the model, with better error handling
+        try:
+            print(f"Loading model: {self.config.EMBEDDING_MODEL} on {self.device}")
+            self.model = SentenceTransformer(self.config.EMBEDDING_MODEL, device=self.device)
+        except Exception as e:
+            raise RuntimeError(f"Failed to load SentenceTransformer model: {str(e)}")
+
         self.model_path = "data/processed/sentence_transformer.pkl"
         # Sentence transformers don't need fitting, but we can save/load if needed
 
@@ -37,6 +45,7 @@ class Embedder:
             return []
 
         try:
+            # Ensure embeddings are returned as numpy arrays
             embeddings = self.model.encode(texts, convert_to_numpy=True)
             return embeddings.tolist()
         except Exception as e:
