@@ -18,11 +18,21 @@ class Embedder:
     def __init__(self):
         self.config = Config()
 
-        # Initialize the model first
+        # Ensure the device is set to CPU even if CUDA is available
+        device = "cpu"  # Always force CPU usage
+
+        # Check if CUDA is available and print a warning (Streamlit Cloud doesn't support GPU)
+        if torch.cuda.is_available():
+            print("CUDA is available, but we're forcing the use of CPU.")
+
         try:
-            print(f"Loading model: {self.config.EMBEDDING_MODEL} on CPU")
+            print(f"Loading model: {self.config.EMBEDDING_MODEL} on {device}")
+            # Load the model first without specifying the device
             self.model = SentenceTransformer(self.config.EMBEDDING_MODEL)
-            self.model.to("cpu")  # Explicitly move model to CPU after loading
+
+            # Explicitly move the model to the CPU
+            self.model.to(device)
+
         except Exception as e:
             raise RuntimeError(f"Failed to load SentenceTransformer model: {str(e)}")
 
@@ -43,6 +53,7 @@ class Embedder:
             return []
 
         try:
+            # Ensure embeddings are returned as numpy arrays
             embeddings = self.model.encode(texts, convert_to_numpy=True)
             return embeddings.tolist()
         except Exception as e:
