@@ -19,6 +19,14 @@ from utils.logger import logger
 
 class CampusGuideApp:
     def __init__(self):
+        # Set environment variables from Streamlit secrets if available
+        if hasattr(st, "secrets"):
+            os.environ["API_PROVIDER"] = st.secrets.get("API_PROVIDER", "groq")
+            os.environ["OPENAI_API_KEY"] = st.secrets.get("OPENAI_API_KEY", "")
+            os.environ["GROQ_API_KEY"] = st.secrets.get("GROQ_API_KEY", "")
+            os.environ["API_KEY"] = st.secrets.get("API_KEY", "")
+            os.environ["LLM_MODEL"] = st.secrets.get("LLM_MODEL", "")
+
         self.config = Config()
         self.sidebar = Sidebar()
         self.chat_ui = ChatUI()
@@ -48,12 +56,14 @@ class CampusGuideApp:
             raw_dir = self.config.DATA_RAW_PATH
 
             supported_files_exist = os.path.exists(raw_dir) and any(
-                f.lower().endswith(tuple(self.config.SUPPORTED_EXTENSIONS)) 
+                f.lower().endswith(tuple(self.config.SUPPORTED_EXTENSIONS))
                 for f in os.listdir(raw_dir)
             )
 
             if supported_files_exist:
-                logger.info("Documents found in raw directory. Auto-ingesting documents...")
+                logger.info(
+                    "Documents found in raw directory. Auto-ingesting documents..."
+                )
                 self.ingest_documents()
                 st.session_state["system_ready"] = True
             else:
