@@ -14,7 +14,11 @@ REFUSAL_TEXT = "The requested information is not available in the provided docum
 class AnswerGenerator:
     def __init__(self):
         self.config = Config()
-        self.client = Groq(api_key=self.config.API_KEY)
+        self.api_key = st.secrets["GROQ"]["API_KEY"]
+        if not self.api_key:
+            raise ValueError("GROQ API Key is missing! Please set the secret.")
+            
+        self.client = Groq(api_key=self.API_KEY)
         self.prompt_templates = PromptTemplates()
 
     def generate_answer(self, query: str, chunks: List[Dict[str, Any]]) -> str:
