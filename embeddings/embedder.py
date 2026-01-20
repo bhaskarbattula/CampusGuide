@@ -18,6 +18,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = ""  # Force CPU
 class Embedder:
     def __init__(self):
         self.config = Config()
+        self.device = torch.device("cpu")
         self.model = SentenceTransformer(self.config.EMBEDDING_MODEL, device="cpu")
         self.model_path = "data/processed/sentence_transformer.pkl"
         # Sentence transformers don't need fitting, but we can save/load if needed
