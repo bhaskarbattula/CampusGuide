@@ -1,6 +1,5 @@
 import streamlit as st
 import os
-import hashlib
 from typing import Dict, Any
 
 from config.config import Config
@@ -42,29 +41,24 @@ class CampusGuideApp:
     def _initialize_system(self):
         logger.info("Initializing CampusGuide system...")
 
-        raw_dir = self.config.DATA_RAW_PATH
-        supported_files_exist = os.path.exists(raw_dir) and any(
-            f.lower().endswith(tuple(self.config.SUPPORTED_EXTENSIONS))
-            for f in os.listdir(raw_dir)
-        )
-
         if self.vector_store.load():
-            if supported_files_exist:
-                st.session_state["system_ready"] = True
-                logger.info("Vector store loaded with existing documents")
-            else:
-                logger.info("No documents in raw folder, clearing old vector store")
-                self.vector_store.clear()
-                st.session_state["system_ready"] = False
+            st.session_state["system_ready"] = True
+            logger.info("Vector store loaded")
         else:
+            raw_dir = self.config.DATA_RAW_PATH
+
+            supported_files_exist = os.path.exists(raw_dir) and any(
+                f.lower().endswith(tuple(self.config.SUPPORTED_EXTENSIONS)) 
+                for f in os.listdir(raw_dir)
+            )
+
             if supported_files_exist:
-                logger.info(
-                    "Documents found in raw directory. Auto-ingesting documents..."
-                )
+                logger.info("Documents found in raw directory. Auto-ingesting documents...")
                 self.ingest_documents()
                 st.session_state["system_ready"] = True
             else:
                 logger.warning("No supported documents found for ingestion")
+
                 st.session_state["system_ready"] = False
 
         st.session_state["retrieval_stats"] = self.retriever.get_retrieval_stats()
@@ -74,128 +68,15 @@ class CampusGuideApp:
     def handle_file_uploads(self, uploaded_files):
         """Handle file uploads from Streamlit UI."""
         if not uploaded_files:
-            logger.info("No files uploaded")
             return False
 
-        logger.info(f"Supported extensions: {self.config.SUPPORTED_EXTENSIONS}")
-        logger.info(f"Processing {len(uploaded_files)} uploaded files")
-        raw_dir = self.config.DATA_RAW_PATH
-        os.makedirs(raw_dir, exist_ok=True)
-
-        # Compute hashes of existing files for duplicate check
-        existing_hashes = {}
-        if os.path.exists(raw_dir):
-            for filename in os.listdir(raw_dir):
-                if filename.lower().endswith(tuple(self.config.SUPPORTED_EXTENSIONS)):
-                    filepath = os.path.join(raw_dir, filename)
-                    try:
-                        with open(filepath, "rb") as f:
-                            existing_hashes[hashlib.md5(f.read()).hexdigest()] = (
-                                filename
-                            )
-                    except Exception:
-                        pass  # Skip if can't read
-
-        saved_files = []
-        for uploaded_file in uploaded_files:
-            logger.info(f"Processing file: {uploaded_file.name}")
-            file_ext = os.path.splitext(uploaded_file.name)[1].lower()
-            logger.info(f"File extension: {file_ext}")
-
-            if file_ext not in self.config.SUPPORTED_EXTENSIONS:
-                logger.warning(
-                    f"Skipping {uploaded_file.name}: unsupported extension {file_ext}"
-                )
-                continue
-
-            # Check for duplicate content
-            file_hash = hashlib.md5(uploaded_file.getbuffer()).hexdigest()
-            if file_hash in existing_hashes:
-                logger.info(
-                    f"Skipped duplicate file: {uploaded_file.name} (matches {existing_hashes[file_hash]})"
-                )
-                continue
-
-            base_name = os.path.splitext(uploaded_file.name)[0]
-            ext = file_ext
-            counter = 0
-            file_path = os.path.join(raw_dir, uploaded_file.name)
-
-            while os.path.exists(file_path):
-                counter += 1
-                file_path = os.path.join(raw_dir, f"{base_name}_{counter}{ext}")
-
-            try:
-                with open(file_path, "wb") as f:
-                    f.write(uploaded_file.getbuffer())
-                saved_files.append(file_path)
-                existing_hashes[file_hash] = os.path.basename(
-                    file_path
-                )  # Update for future checks
-                logger.info(f"Saved uploaded file: {file_path}")
-            except Exception as e:
-                logger.error(f"Failed to save file {uploaded_file.name}: {e}")
-                continue
-
-            base_name = os.path.splitext(uploaded_file.name)[0]
-            ext = file_ext
-            counter = 0
-            file_path = os.path.join(raw_dir, uploaded_file.name)
-
-            while os.path.exists(file_path):
-                counter += 1
-                file_path = os.path.join(raw_dir, f"{base_name}_{counter}{ext}")
-
-            try:
-                with open(file_path, "wb") as f:
-                    f.write(uploaded_file.getbuffer())
-                saved_files.append(file_path)
-                logger.info(f"Saved uploaded file: {file_path}")
-            except Exception as e:
-                logger.error(f"Failed to save file {uploaded_file.name}: {e}")
-                continue
-
-        if saved_files:
-            logger.info(f"Saved files: {[os.path.basename(f) for f in saved_files]}")
-            # Trigger full ingestion to rebuild vector store with all files
-            logger.info(
-                f"Uploaded {len(saved_files)} files, rebuilding knowledge base..."
-            )
-            try:
-                self.ingest_documents()
-                return True
-            except Exception as e:
-                logger.error(f"Failed to ingest documents after upload: {e}")
-                return False
-
-        logger.warning("No files were successfully saved")
-        return False
-
         raw_dir = self.config.DATA_RAW_PATH
         os.makedirs(raw_dir, exist_ok=True)
 
         saved_files = []
         for uploaded_file in uploaded_files:
-            file_ext = os.path.splitext(uploaded_file.name)[1].lower()
-            if file_ext not in self.config.SUPPORTED_EXTENSIONS:
-                continue
-
-            base_name = os.path.splitext(uploaded_file.name)[0]
-            ext = file_ext
-            counter = 0
-            file_path = os.path.join(raw_dir, uploaded_file.name)
-
-            while os.path.exists(file_path):
-                counter += 1
-                file_path = os.path.join(raw_dir, f"{base_name}_{counter}{ext}")
-
-            try:
-                with open(file_path, "wb") as f:
-                    f.write(uploaded_file.getbuffer())
-                saved_files.append(file_path)
-                logger.info(f"Saved uploaded file: {file_path}")
-            except Exception as e:
-                logger.error(f"Failed to save file {uploaded_file.name}: {e}")
+            # Validate file type
+            if not uploaded_file.name.lower().endswith(".txt"):
                 continue
 
             # Create unique filename to avoid overwrites
@@ -246,20 +127,10 @@ class CampusGuideApp:
             logger.warning("No documents found")
             return
 
-        logger.info(
-            f"Loaded documents: {[d['metadata']['filename'] for d in documents]}"
-        )
-
         all_chunks = []
         for doc in documents:
             doc["text"] = self.text_cleaner.clean_text(doc["text"])
-            chunks = self.text_splitter.split_document(doc)
-            all_chunks.extend(chunks)
-            logger.info(
-                f"Created {len(chunks)} chunks for {doc['metadata']['filename']}"
-            )
-
-        logger.info(f"Total chunks created: {len(all_chunks)}")
+            all_chunks.extend(self.text_splitter.split_document(doc))
 
         # Fit the embedder on all chunk texts first
         chunk_texts = [chunk["text"] for chunk in all_chunks]
@@ -269,8 +140,6 @@ class CampusGuideApp:
         embedded_chunks = self.embedder.embed_chunks(all_chunks)
         self.vector_store.add_chunks(embedded_chunks)
         self.vector_store.save()
-
-        logger.info(f"Vector store saved with {len(embedded_chunks)} embedded chunks")
 
         st.session_state["system_ready"] = True
 
@@ -288,35 +157,20 @@ class CampusGuideApp:
 
         # ❌ Retrieval confidence failure
         if not safety["safe"]:
-            logger.warning("Retrieval safety failed")
             return self._refusal_response()
 
         chunks = retrieval_result["chunks"]
-        logger.info(
-            f"Retrieved {len(chunks)} chunks from: {[c.get('metadata', {}).get('filename', 'unknown') for c in chunks]}"
-        )
-        logger.info(
-            f"Total context length: {sum(len(c['text']) for c in chunks)} chars"
-        )
-
         answer = self.answer_generator.generate_answer(query, chunks)
-        logger.info(f"Generated answer: {answer[:200]}...")
-        logger.info(f"Is refusal: {self._is_refusal(answer)}")
 
         # ❌ LLM refusal
         if self._is_refusal(answer):
-            logger.warning("LLM generated refusal")
             return self._refusal_response()
 
         # ❌ Grounding failure
         grounding = self.grounding_validator.validate_answer_grounding(
             answer, chunks, query
         )
-        logger.info(
-            f"Grounding valid: {grounding['valid']}, score: {grounding.get('grounding_score', 'N/A')}"
-        )
         if not grounding["valid"]:
-            logger.warning("Grounding validation failed")
             return self._refusal_response()
 
         # ✅ Valid answer
@@ -390,19 +244,13 @@ class CampusGuideApp:
 
         # Auto-ingest documents if not ready (for initial load or restart)
         if not st.session_state.get("system_ready"):
-            raw_dir = self.config.DATA_RAW_PATH
-            if os.path.exists(raw_dir) and any(
-                f.lower().endswith(tuple(self.config.SUPPORTED_EXTENSIONS))
-                for f in os.listdir(raw_dir)
-            ):
-                with st.spinner("Loading documents..."):
-                    self.ingest_documents()
-                if not st.session_state.get("system_ready"):
-                    st.error("❌ Failed to load documents.")
-                    return
-            else:
-                st.info("📤 Please upload .txt files to build the knowledge base.")
-                # Don't return, allow upload
+            with st.spinner("Loading documents..."):
+                self.ingest_documents()
+            if not st.session_state.get("system_ready"):
+                st.error(
+                    "❌ Failed to load documents. Please add .txt files to data/raw/ and restart the application."
+                )
+                return
 
         role = self.sidebar.render()
         self.chat_ui.set_query_callback(self.process_query)
