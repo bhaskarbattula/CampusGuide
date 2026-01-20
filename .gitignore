@@ -9,7 +9,7 @@ venv/
 .venv/
 
 # Environment variables
-.env
+#.env
 
 # Vector store & processed data
 data/processed/
