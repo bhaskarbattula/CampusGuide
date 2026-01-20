@@ -1,9 +1,14 @@
 import numpy as np
 import pickle
 import os
+import torch
 from typing import List, Dict, Any
 from sentence_transformers import SentenceTransformer
 from config.config import Config
+
+# Force CPU tensors to avoid meta tensor issues
+torch.set_default_dtype(torch.float32)
+torch.set_default_device("cpu")
 
 # Set environment variables to prevent device issues
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
@@ -13,7 +18,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = ""  # Force CPU
 class Embedder:
     def __init__(self):
         self.config = Config()
-        self.model = SentenceTransformer(self.config.EMBEDDING_MODEL)
+        self.model = SentenceTransformer(self.config.EMBEDDING_MODEL, device="cpu")
         self.model_path = "data/processed/sentence_transformer.pkl"
         # Sentence transformers don't need fitting, but we can save/load if needed
 
