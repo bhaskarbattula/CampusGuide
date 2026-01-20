@@ -18,13 +18,11 @@ class Embedder:
     def __init__(self):
         self.config = Config()
 
-        # Force the model to use CPU even if the config specifies otherwise
-        self.device = torch.device("cpu")
-
-        # Try to load the model, with better error handling
+        # Initialize the model first
         try:
-            print(f"Loading model: {self.config.EMBEDDING_MODEL} on {self.device}")
-            self.model = SentenceTransformer(self.config.EMBEDDING_MODEL, device=self.device)
+            print(f"Loading model: {self.config.EMBEDDING_MODEL} on CPU")
+            self.model = SentenceTransformer(self.config.EMBEDDING_MODEL)
+            self.model.to("cpu")  # Explicitly move model to CPU after loading
         except Exception as e:
             raise RuntimeError(f"Failed to load SentenceTransformer model: {str(e)}")
 
@@ -45,7 +43,6 @@ class Embedder:
             return []
 
         try:
-            # Ensure embeddings are returned as numpy arrays
             embeddings = self.model.encode(texts, convert_to_numpy=True)
             return embeddings.tolist()
         except Exception as e:
