@@ -30,8 +30,13 @@ class Embedder:
             # Load the model first without specifying the device
             self.model = SentenceTransformer(self.config.EMBEDDING_MODEL)
 
-            # Explicitly move the model to the CPU
-            self.model.to(device)
+            # Check if the model is in a meta tensor state and handle it
+            if hasattr(self.model, 'to_empty'):  # Check if to_empty is available
+                print("Model is in meta tensor state, using to_empty() to move to CPU.")
+                self.model.to_empty(device)  # Move the model using to_empty (for meta tensor issues)
+            else:
+                # If not meta tensor, use the standard approach to move to the device
+                self.model.to(device)
 
         except Exception as e:
             raise RuntimeError(f"Failed to load SentenceTransformer model: {str(e)}")
