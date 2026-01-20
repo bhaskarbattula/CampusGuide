@@ -1,6 +1,11 @@
 import streamlit as st
 import os
+import streamlit as st
+import torch
 from typing import Dict, Any
+
+# Force CPU device for all tensors
+torch.set_default_device("cpu")
 
 from config.config import Config
 from ingestion.document_loader import DocumentLoader
