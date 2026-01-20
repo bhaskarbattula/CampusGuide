@@ -18,7 +18,7 @@ class AnswerGenerator:
         if not self.api_key:
             raise ValueError("GROQ API Key is missing! Please set the secret.")
             
-        self.client = Groq(api_key=self.API_KEY)
+        self.client = Groq(api_key=self.api_key)
         self.prompt_templates = PromptTemplates()
 
     def generate_answer(self, query: str, chunks: List[Dict[str, Any]]) -> str:
