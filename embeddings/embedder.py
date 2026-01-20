@@ -14,33 +14,11 @@ torch.set_default_device("cpu")
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 os.environ["CUDA_VISIBLE_DEVICES"] = ""  # Force CPU
 
+
 class Embedder:
     def __init__(self):
         self.config = Config()
-
-        # Ensure the device is set to CPU even if CUDA is available
-        device = "cpu"  # Always force CPU usage
-
-        # Check if CUDA is available and print a warning (Streamlit Cloud doesn't support GPU)
-        if torch.cuda.is_available():
-            print("CUDA is available, but we're forcing the use of CPU.")
-
-        try:
-            print(f"Loading model: {self.config.EMBEDDING_MODEL} on {device}")
-            # Load the model first without specifying the device
-            self.model = SentenceTransformer(self.config.EMBEDDING_MODEL)
-
-            # Check if the model is in a meta tensor state and handle it
-            if hasattr(self.model, 'to_empty'):  # Check if to_empty is available
-                print("Model is in meta tensor state, using to_empty() to move to CPU.")
-                self.model.to_empty(device)  # Move the model using to_empty (for meta tensor issues)
-            else:
-                # If not meta tensor, use the standard approach to move to the device
-                self.model.to(device)
-
-        except Exception as e:
-            raise RuntimeError(f"Failed to load SentenceTransformer model: {str(e)}")
-
+        self.model = SentenceTransformer(self.config.EMBEDDING_MODEL)
         self.model_path = "data/processed/sentence_transformer.pkl"
         # Sentence transformers don't need fitting, but we can save/load if needed
 
